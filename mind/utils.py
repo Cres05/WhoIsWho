@@ -95,14 +95,14 @@ class DataCollatorForPacking:
     def __call__(self, features):
         features = features[0]
         return {
-            'input_ids':features['input_ids'],
-            'attention_mask':features['attention_mask'],
-            'position_ids':features['position_ids'],
-            'text_inputs':features['text_inputs'],
-            'labels':  features['labels'],
-            'author':features['author'],
-            'pubs':features['pubs'],
-            'graph_emb':features['graph_emb']
+            "input_ids": features["input_ids"],
+            "attention_mask": features["attention_mask"],
+            "position_ids": features["position_ids"],
+            "text_inputs": features["text_inputs"],
+            "labels": features["labels"],
+            "author": features["author"],
+            "pubs": features["pubs"],
+            "graph_emb": features["graph_emb"],
         }
 
         # return{

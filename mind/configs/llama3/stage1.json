@@ -31,7 +31,7 @@
     "bf16":true,
     "seed": 42,
     "save_steps":20,
-    "eval_steps":20,
+    "eval_steps":1,
     "save_only_model":true,
     "deepspeed":"configs/ds_zero_1.json"
 }

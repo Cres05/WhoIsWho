@@ -3,8 +3,8 @@
     "ptm_model_path":"models/roberta-base",
     "author_data":"data/IND-WhoIsWho/train_author.json",
     "pub_data":"data/IND-WhoIsWho/pid_to_info_all.json",
-    "output_dir":"output/llama3/stage1",
-    "run_name":"stage1",
+    "output_dir":"output/llama3/pwc_1227",
+    "run_name":"pwc",
     "preprocessing_num_workers": 20,
 
     "lora_rank":8,
@@ -16,19 +16,20 @@
     "max_source_length":8192,
     "per_device_train_batch_size":1,
     "per_device_eval_batch_size":1,
-    "gradient_accumulation_steps":16,
+    "gradient_accumulation_steps":2,
 
     "num_train_epochs":6,
     "warmup_ratio":0.1,
     "lr_scheduler_type": "cosine",
-    "learning_rate":1e-4,
+    "learning_rate":1e-5,
 
     "feature":"title",
     "use_chat_template":false,
 
     "bf16":true,
     "seed": 47,
-    "save_steps":20,
+    "save_steps":264,
+    "eval_steps":264,
     "save_only_model":true,
     "deepspeed":"configs/ds_zero_1.json"
 }

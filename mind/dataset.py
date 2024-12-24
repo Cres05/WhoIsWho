@@ -38,91 +38,39 @@ END_OF_GRAPH = "<eog>"
 END_OF_EMB = "<eoe>"
 TRAINABLE_SPECIAL_TOKENS = [END_OF_TEXT, END_OF_GRAPH, END_OF_EMB, LABEL_TOKEN]
 
+INSTRUCTION = """
+You are tasked with determining hierarchical relationships between concepts based on the given query and candidate terms. Specifically:
+1. Determine if the **Hypernym Candidate** is a hypernym (broader category) of the query.
+2. Determine if the **Hyponym Candidate** is a hyponym (narrower category) of the query.
+
+For each query and candidate pair, answer the questions with 'Yes' or 'No'. {}
+"""
+
+LOCAL_INSTRUCTION = (
+    'Query: "{}"\n'
+    + '1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
+    + LABEL_TOKEN
+    + '\n2. Hyponym Candidate: "{}"\n   Is this a hyponym of the query? Answer: '
+    + LABEL_TOKEN
+)
+
 
 special_token_dict = {
     "additional_special_tokens": TRAINABLE_SPECIAL_TOKENS + [EMBED_TOKEN, GRAPH_TOKEN]
 }
 
 
-def decoding(string):
-    if re.search(r"\\u[0-9a-fA-F]{4}", string):
-        return codecs.decode(string, "unicode-escape")
-    return string
-
-
-def get_pinyin(name):
-    if name == re.search("[\u4e00-\u9fff]", name) is not None:
-        return pinyin.get(name, delimiter=" ", format="strip")
-    return name
-
-
-def is_not_none(inputs):
-    if isinstance(inputs, str):
-        return inputs != ""
-    elif isinstance(inputs, list):
-        return len(inputs) != 0
-    else:
-        return inputs is not None
-
-
-def cut_to_target_len(text, target_len):
-    if is_not_none(text):
-        return " ".join(text.split(" ")[:target_len])
-    else:
-        return ""
-
-
-funcs = [
-    match_name_one,
-    match_name_two,
-    match_name_three,
-    match_name_four,
-    match_name_five,
-    match_name_six,
-    match_name_seven,
-]
-
-
-def match(name1, name2, loose=False):
-
-    clean_name1 = name1
-    clean_name2 = name2
-    for f in funcs:
-        if f(clean_name1, clean_name2, loose):
-            return True
-        if f(clean_name2, clean_name1, loose):
-            return True
-    return False
-
-
-def cleaning_name(name):
-    if is_chinese(name):
-        name = get_pin_yin(name)
-    name = unidecode(name)
-    name = name.lower()
-    new_name = ""
-    for a in name:
-        if a.isalpha():
-            new_name += a
-        else:
-            new_name = new_name.strip()
-            new_name += " "
-    return new_name.strip()
-
-
 @dataclass
-class DataCollatorForPacking:
+class DataCollatorForPWC:
     def __call__(self, features):
         features = features[0]
         return {
             "input_ids": features["input_ids"],
             "attention_mask": features["attention_mask"],
             "position_ids": features["position_ids"],
-            "text_inputs": features["text_inputs"],
             "labels": features["labels"],
-            "author": features["author"],
-            "pubs": features["pubs"],
-            "graph_emb": features["graph_emb"],
+            "query": features["query"],
+            "candidates": features["candidates"],
         }
 
         # return{
@@ -142,25 +90,6 @@ def generate_random_mask(length, prob):
 
 MAX_TEST_SIZE = 1000
 MAX_VALIDATION_SIZE = 1000
-
-# nlp = spacy.load('en_core_web_md')
-
-
-def get_edges(edge_index_list):
-    undirected_edge_list = []
-    edge_index_list = [
-        [item[0], item[1]] for item in edge_index_list if item[0] != item[1]
-    ]
-    for item in edge_index_list:
-        if [item[1], item[0]] not in edge_index_list:
-            edge_index_list.append([item[1], item[0]])
-    edge_index = torch.from_numpy(np.array(edge_index_list)).transpose(1, 0)
-    # edge_index, _ = remove_self_loops(
-    #     torch.from_numpy(np.array(edge_index_list)).transpose(1, 0))  # remove self-loop
-    undirected_edge_list.append(
-        edge_index
-    )  # convert to undirected/bi-directed edge_index
-    return undirected_edge_list[0]
 
 
 class Taxon(object):
@@ -478,200 +407,271 @@ class RawDataset(Dataset):
         train_nodes.append(self.pseudo_root_node)
         self.full_graph = full_graph
 
-        if mode == "train":
-            # add pseudo leaf node to core graph
-            datapath = os.path.split(graph_dataset.data_path)[0]
-            graph_pickle_path = os.path.join(datapath, "subgraphs.pickle")
-            graph_pickled = False
-            if os.path.isfile(graph_pickle_path):
-                graph_pickled = True
-                with open(graph_pickle_path, "rb") as f:
-                    graphs = pickle.load(f)
+        # add pseudo leaf node to core graph
+        datapath = os.path.split(graph_dataset.data_path)[0]
+        graph_pickle_path = os.path.join(datapath, "subgraphs.pickle")
+        graph_pickled = False
+        if os.path.isfile(graph_pickle_path):
+            graph_pickled = True
+            with open(graph_pickle_path, "rb") as f:
+                graphs = pickle.load(f)
 
-            print("adding pseudo leaf")
-            if graph_pickled:
-                self.core_subgraph = graphs["core_subgraph"]
-                self.pseudo_leaf_node = graphs["pseudo_leaf_node"]
-            else:
-                self.core_subgraph = self._get_holdout_subgraph(train_nodes)
-                print("holding out subgraph")
-                self.pseudo_leaf_node = Taxon(
-                    tx_id="", norm_name="", display_name="pseudo leaf"
+        print("adding pseudo leaf")
+        if graph_pickled:
+            self.core_subgraph = graphs["core_subgraph"]
+            self.pseudo_leaf_node = graphs["pseudo_leaf_node"]
+        else:
+            self.core_subgraph = self._get_holdout_subgraph(train_nodes)
+            print("holding out subgraph")
+            self.pseudo_leaf_node = Taxon(
+                tx_id="", norm_name="", display_name="pseudo leaf"
+            )
+            self.core_subgraph.add_node(self.pseudo_leaf_node)
+            for node in list(self.core_subgraph.nodes()):
+                self.core_subgraph.add_edge(node, self.pseudo_leaf_node)
+
+        # liu: adj mat
+        # edges = list(self.core_subgraph.edges())
+        # tmp_id2taxon = {idx: taxon for idx, taxon in enumerate(self.core_subgraph.nodes())}
+        # tmp_taxon2id = {v: k for k, v in tmp_id2taxon.items()}
+        # train_edges_list = [[tmp_taxon2id[item[0]], tmp_taxon2id[item[1]]] for item in edges if item[0] != self.pseudo_leaf_node and item[1] != self.pseudo_leaf_node]
+        # edge_list = get_edges(train_edges_list)
+        # self.adj = edge_list.long()
+        # print(torch.max(self.adj[1]))
+        ######################################################################################
+
+        self.taxon2id[self.pseudo_leaf_node] = len(full_graph.nodes)
+        self.taxon2id[self.pseudo_root_node] = len(full_graph.nodes) - 1
+        self.id2taxon[len(full_graph.nodes)] = self.pseudo_leaf_node
+        self.id2taxon[len(full_graph.nodes) - 1] = self.pseudo_root_node
+        self.leaf_nodes = [
+            node
+            for node in self.core_subgraph.nodes()
+            if self.core_subgraph.out_degree(node) == 1
+        ]
+
+        # add interested node list and subgraph
+        # remove supersource nodes (i.e., nodes without in-degree 0)
+        # self.node_list = [n for n in train_nodes if n not in roots]
+        self.node_list = [n for n in train_nodes if n != self.pseudo_root_node]
+        # getitem的idx找到对应的taxon，使用在all_embed中找对应的结构emb
+        self.train_allemb_id2taxon = {
+            idx: taxon for idx, taxon in enumerate(self.core_subgraph.nodes())
+        }
+        self.train_taxon2allemb_id = {
+            v: k for k, v in self.train_allemb_id2taxon.items()
+        }
+
+        # For TEMP: 加入path
+        print("adding parent2path...")
+        datapath = os.path.split(graph_dataset.data_path)[0]
+        path_pickle_path = os.path.join(datapath, "parent2paths.pickle")
+
+        if os.path.isfile(path_pickle_path):
+            with open(path_pickle_path, "rb") as f:
+                paths = pickle.load(f)
+            self.parent2paths = paths["parent2paths"]
+        else:
+            print("generating parent2path...")
+            self.parent2paths = {}
+            for node in self.core_subgraph.nodes():
+                try:
+                    self.parent2paths[node] = list(
+                        nx.all_shortest_paths(
+                            self.core_subgraph, self.pseudo_root_node, node
+                        )
+                    )[0]
+                except:
+                    print("None Path!")
+                    self.parent2paths[node] = [node]
+            # for node, path in self.parent2paths.items():
+            #     self.parent2paths[node] = ",".join([n.norm_name for n in path])
+            with open(path_pickle_path, "wb") as f:
+                pickle.dump(
+                    {"parent2paths": self.parent2paths},
+                    f,
+                    protocol=pickle.HIGHEST_PROTOCOL,
                 )
-                self.core_subgraph.add_node(self.pseudo_leaf_node)
-                for node in list(self.core_subgraph.nodes()):
-                    self.core_subgraph.add_edge(node, self.pseudo_leaf_node)
 
-            # liu: adj mat
-            # edges = list(self.core_subgraph.edges())
-            # tmp_id2taxon = {idx: taxon for idx, taxon in enumerate(self.core_subgraph.nodes())}
-            # tmp_taxon2id = {v: k for k, v in tmp_id2taxon.items()}
-            # train_edges_list = [[tmp_taxon2id[item[0]], tmp_taxon2id[item[1]]] for item in edges if item[0] != self.pseudo_leaf_node and item[1] != self.pseudo_leaf_node]
-            # edge_list = get_edges(train_edges_list)
-            # self.adj = edge_list.long()
-            # print(torch.max(self.adj[1]))
-            ######################################################################################
+        # build node2pos, node2edge
+        print("building node2pos, node2edge")
+        self.node2pos, self.node2edge = {}, {}
+        self.node2parents, self.node2children = {}, {}
+        for node in self.node_list:
+            parents = set(self.core_subgraph.predecessors(node))
+            children = set(self.core_subgraph.successors(node))
+            if len(children) > 1:
+                children = [i for i in children if i != self.pseudo_leaf_node]
+            node_pos_edges = [
+                (pre, suc) for pre in parents for suc in children if pre != suc
+            ]
+            if len(node_pos_edges) == 0:
+                node_pos_edges = [(pre, suc) for pre in parents for suc in children]
 
-            self.taxon2id[self.pseudo_leaf_node] = len(full_graph.nodes)
-            self.taxon2id[self.pseudo_root_node] = len(full_graph.nodes) - 1
-            self.id2taxon[len(full_graph.nodes)] = self.pseudo_leaf_node
-            self.id2taxon[len(full_graph.nodes) - 1] = self.pseudo_root_node
-            self.leaf_nodes = [
+            self.node2edge[node] = set(self.core_subgraph.in_edges(node)).union(
+                set(self.core_subgraph.out_edges(node))
+            )
+            self.node2pos[node] = node_pos_edges
+            self.node2parents[node] = parents
+            self.node2children[node] = children
+
+        print("building valid and test node list")
+        self.valid_node_list = [
+            self.id2taxon[node_id] for node_id in graph_dataset.validation_node_ids
+        ]
+        if graph_pickled:
+            self.valid_holdout_subgraph = graphs["valid_subgraph"]
+        else:
+            self.valid_holdout_subgraph = self._get_holdout_subgraph(
+                train_nodes + self.valid_node_list
+            )
+            self.valid_holdout_subgraph.add_node(self.pseudo_leaf_node)
+            for node in [
                 node
-                for node in self.core_subgraph.nodes()
-                if self.core_subgraph.out_degree(node) == 1
-            ]
+                for node in self.valid_holdout_subgraph.nodes()
+                if self.valid_holdout_subgraph.out_degree(node) == 0
+            ]:
+                self.valid_holdout_subgraph.add_edge(node, self.pseudo_leaf_node)
+        self.valid_id2taxon = {
+            idx: taxon
+            for idx, taxon in enumerate(self.valid_holdout_subgraph.nodes())
+        }
+        self.valid_taxon2id = {v: k for k, v in self.valid_id2taxon.items()}
+        self.valid_node2pos = self._find_insert_position(
+            self.valid_node_list, self.valid_holdout_subgraph
+        )
 
-            # add interested node list and subgraph
-            # remove supersource nodes (i.e., nodes without in-degree 0)
-            # self.node_list = [n for n in train_nodes if n not in roots]
-            self.node_list = [n for n in train_nodes if n != self.pseudo_root_node]
-            # getitem的idx找到对应的taxon，使用在all_embed中找对应的结构emb
-            self.train_allemb_id2taxon = {
-                idx: taxon for idx, taxon in enumerate(self.core_subgraph.nodes())
-            }
-            self.train_taxon2allemb_id = {
-                v: k for k, v in self.train_allemb_id2taxon.items()
-            }
-
-            # For TEMP: 加入path
-            print("adding parent2path...")
-            datapath = os.path.split(graph_dataset.data_path)[0]
-            path_pickle_path = os.path.join(datapath, "parent2paths.pickle")
-
-            if os.path.isfile(path_pickle_path):
-                with open(path_pickle_path, "rb") as f:
-                    paths = pickle.load(f)
-                self.parent2paths = paths["parent2paths"]
-            else:
-                print("generating parent2path...")
-                self.parent2paths = {}
-                for node in self.core_subgraph.nodes():
-                    try:
-                        self.parent2paths[node] = list(
-                            nx.all_shortest_paths(
-                                self.core_subgraph, self.pseudo_root_node, node
-                            )
-                        )[0]
-                    except:
-                        print("None Path!")
-                        self.parent2paths[node] = [node]
-                for node, path in self.parent2paths.items():
-                    self.parent2paths[node] = ",".join([n.norm_name for n in path])
-                with open(path_pickle_path, "wb") as f:
-                    pickle.dump(
-                        {"parent2paths": self.parent2paths},
-                        f,
-                        protocol=pickle.HIGHEST_PROTOCOL,
-                    )
-
-            # build node2pos, node2edge
-            print("building node2pos, node2edge")
-            self.node2pos, self.node2edge = {}, {}
-            self.node2parents, self.node2children = {}, {}
-            for node in self.node_list:
-                parents = set(self.core_subgraph.predecessors(node))
-                children = set(self.core_subgraph.successors(node))
-                if len(children) > 1:
-                    children = [i for i in children if i != self.pseudo_leaf_node]
-                node_pos_edges = [
-                    (pre, suc) for pre in parents for suc in children if pre != suc
-                ]
-                if len(node_pos_edges) == 0:
-                    node_pos_edges = [(pre, suc) for pre in parents for suc in children]
-
-                self.node2edge[node] = set(self.core_subgraph.in_edges(node)).union(
-                    set(self.core_subgraph.out_edges(node))
-                )
-                self.node2pos[node] = node_pos_edges
-                self.node2parents[node] = parents
-                self.node2children[node] = children
-
-            print("building valid and test node list")
-            self.valid_node_list = [
-                self.id2taxon[node_id] for node_id in graph_dataset.validation_node_ids
-            ]
-            if graph_pickled:
-                self.valid_holdout_subgraph = graphs["valid_subgraph"]
-            else:
-                self.valid_holdout_subgraph = self._get_holdout_subgraph(
-                    train_nodes + self.valid_node_list
-                )
-                self.valid_holdout_subgraph.add_node(self.pseudo_leaf_node)
-                for node in [
-                    node
-                    for node in self.valid_holdout_subgraph.nodes()
-                    if self.valid_holdout_subgraph.out_degree(node) == 0
-                ]:
-                    self.valid_holdout_subgraph.add_edge(node, self.pseudo_leaf_node)
-            self.valid_id2taxon = {
-                idx: taxon
-                for idx, taxon in enumerate(self.valid_holdout_subgraph.nodes())
-            }
-            self.valid_taxon2id = {v: k for k, v in self.valid_id2taxon.items()}
-            self.valid_node2pos = self._find_insert_position(
-                self.valid_node_list, self.valid_holdout_subgraph
+        self.test_node_list = [
+            self.id2taxon[node_id] for node_id in graph_dataset.test_node_ids
+        ]
+        if graph_pickled:
+            self.test_holdout_subgraph = graphs["test_subgraph"]
+        else:
+            self.test_holdout_subgraph = self._get_holdout_subgraph(
+                train_nodes + self.test_node_list
             )
+            self.test_holdout_subgraph.add_node(self.pseudo_leaf_node)
+            for node in [
+                node
+                for node in self.test_holdout_subgraph.nodes()
+                if self.test_holdout_subgraph.out_degree(node) == 0
+            ]:
+                self.test_holdout_subgraph.add_edge(node, self.pseudo_leaf_node)
+        self.test_id2taxon = {
+            idx: taxon
+            for idx, taxon in enumerate(self.test_holdout_subgraph.nodes())
+        }
+        self.test_taxon2id = {v: k for k, v in self.test_id2taxon.items()}
+        self.test_node2pos = self._find_insert_position(
+            self.test_node_list, self.test_holdout_subgraph
+        )
 
-            self.test_node_list = [
-                self.id2taxon[node_id] for node_id in graph_dataset.test_node_ids
-            ]
-            if graph_pickled:
-                self.test_holdout_subgraph = graphs["test_subgraph"]
-            else:
-                self.test_holdout_subgraph = self._get_holdout_subgraph(
-                    train_nodes + self.test_node_list
+        if not graph_pickled:
+            with open(graph_pickle_path, "wb") as f:
+                pickle.dump(
+                    {
+                        "pseudo_leaf_node": self.pseudo_leaf_node,
+                        "core_subgraph": self.core_subgraph,
+                        "valid_subgraph": self.valid_holdout_subgraph,
+                        "test_subgraph": self.test_holdout_subgraph,
+                    },
+                    f,
+                    protocol=pickle.HIGHEST_PROTOCOL,
                 )
-                self.test_holdout_subgraph.add_node(self.pseudo_leaf_node)
-                for node in [
-                    node
-                    for node in self.test_holdout_subgraph.nodes()
-                    if self.test_holdout_subgraph.out_degree(node) == 0
-                ]:
-                    self.test_holdout_subgraph.add_edge(node, self.pseudo_leaf_node)
-            self.test_id2taxon = {
-                idx: taxon
-                for idx, taxon in enumerate(self.test_holdout_subgraph.nodes())
-            }
-            self.test_taxon2id = {v: k for k, v in self.test_id2taxon.items()}
-            self.test_node2pos = self._find_insert_position(
-                self.test_node_list, self.test_holdout_subgraph
-            )
 
-            if not graph_pickled:
-                with open(graph_pickle_path, "wb") as f:
-                    pickle.dump(
-                        {
-                            "pseudo_leaf_node": self.pseudo_leaf_node,
-                            "core_subgraph": self.core_subgraph,
-                            "valid_subgraph": self.valid_holdout_subgraph,
-                            "test_subgraph": self.test_holdout_subgraph,
-                        },
-                        f,
-                        protocol=pickle.HIGHEST_PROTOCOL,
-                    )
+        # used for sampling negative positions during train/validation stage
+        self.pointer = 0
+        self.all_edges = list(self._get_candidate_positions(self.core_subgraph))
+        random.shuffle(self.all_edges)
+        self.node2pos_node = {}
+        tot = 0
+        for node, eles in self.node2pos.items():
+            self.node2pos_node[node] = [set(), set()]
+            # xu:正例只有一边时只加入前面
+            if len(eles) == 1 and eles[0][1] is self.pseudo_leaf_node:
+                self.node2pos_node[node][0].add(eles[0][0])
+                tot += 1
+                continue
+            for ele in eles:
+                self.node2pos_node[node][0].add(ele[0])
+                self.node2pos_node[node][1].add(ele[1])
+        print(tot, len(self.node2pos))
+        for node, eles in self.node2edge.items():
+            for ele in eles:
+                self.node2pos_node[node][0].add(ele[0])
+                self.node2pos_node[node][1].add(ele[1])
 
-            # used for sampling negative positions during train/validation stage
-            self.pointer = 0
-            self.all_edges = list(self._get_candidate_positions(self.core_subgraph))
-            random.shuffle(self.all_edges)
-            self.node2pos_node = {}
-            tot = 0
-            for node, eles in self.node2pos.items():
-                self.node2pos_node[node] = [set(), set()]
-                # xu:正例只有一边时只加入前面
-                if len(eles) == 1 and eles[0][1] is self.pseudo_leaf_node:
-                    self.node2pos_node[node][0].add(eles[0][0])
-                    tot += 1
-                    continue
-                for ele in eles:
-                    self.node2pos_node[node][0].add(ele[0])
-                    self.node2pos_node[node][1].add(ele[1])
-            print(tot, len(self.node2pos))
-            for node, eles in self.node2edge.items():
-                for ele in eles:
-                    self.node2pos_node[node][0].add(ele[0])
-                    self.node2pos_node[node][1].add(ele[1])
+
+        local_instruct = (
+            'Query: "{}"\n'
+            + '1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
+            + LABEL_TOKEN
+        )
+
+
+        root_nodes = self.full_graph.successors(self.pseudo_root_node)
+        self.second_level_nodes = set()
+        third_level_nodes = set()
+        # 根节点
+        for root in root_nodes:
+            # 第二层节点
+            successors = list(self.full_graph.successors(root))
+            self.second_level_nodes.update(successors)
+            # 第三层节点
+            for node in successors:
+                third_level_nodes.update(self.full_graph.successors(node))
+
+        test_nodes = []
+        for node in self.test_node_list:
+            if node in third_level_nodes:
+                test_nodes.append(node)
+
+        
+        self.test_data = []
+        packing_data = []
+
+        for node in test_nodes:
+            # 遍历 second_level_nodes 生成样本
+            for p in self.second_level_nodes:
+                pair = (node, p)
+                packing_data.append(pair)  # 添加到当前组
+
+                # 如果当前组满了 10 个样本，打包到 test_data
+                if len(packing_data) ==30:
+                    self.test_data.append(packing_data)
+                    packing_data = []  # 清空当前组
+
+            # 如果最后剩下的样本不足 10 个，也需要保存
+            if packing_data:
+                self.test_data.append(packing_data)
+                packing_data = []
+
+
+        valid_nodes = []
+        for node in self.valid_node_list:
+            if node in third_level_nodes:
+                valid_nodes.append(node)
+
+        
+        self.valid_data = []
+        packing_data = []
+
+        for node in valid_nodes:
+            # 遍历 second_level_nodes 生成样本
+            for p in self.second_level_nodes:
+                pair = (node, p)
+                packing_data.append(pair)  # 添加到当前组
+
+                # 如果当前组满了 10 个样本，打包到 test_data
+                if len(packing_data) == 30:
+                    self.valid_data.append(packing_data)
+                    packing_data = []  # 清空当前组
+
+            # 如果最后剩下的样本不足 10 个，也需要保存
+            if packing_data:
+                self.valid_data.append(packing_data)
+                packing_data = []
+
 
         end = time.time()
         print(f"Finish loading dataset ({end - start} seconds)")
@@ -680,7 +680,12 @@ class RawDataset(Dataset):
         return f"{self.__class__.__name__} mode:{self.mode}"
 
     def __len__(self):
-        return len(self.node_list)
+        if self.mode == 'train':
+            return len(self.node_list)
+        elif self.mode == 'eval':
+            return len(self.valid_data)
+        else:
+            return len(self.test_data)
 
     def __getitem__(self, index):
         """Generate an data instance based on train/validation/test mode.
@@ -690,51 +695,69 @@ class RawDataset(Dataset):
         If self.sampling_mode == 1:
             This list contain one and ONLY one triplet with label = 1, others have label = 0
         """
-        res = []
-        q = self.node_list[index]
+        if self.mode == "train":
+            res = []
+            q = self.node_list[index]
 
-        # generate positive triplet(s)
-        if self.sampling_mode == 0:
-            positive_positions = self.node2pos[q]
-            if len(positive_positions) > self.max_pos_size and self.mode == "train":
-                positive_positions = random.sample(
-                    positive_positions, k=self.max_pos_size
+            # generate positive triplet(s)
+            if self.sampling_mode == 1:
+                positive_positions = self.node2pos[q]
+                if len(positive_positions) > self.max_pos_size and self.mode == "train":
+                    positive_positions = random.sample(
+                        positive_positions, k=self.max_pos_size
+                    )
+            else:  # self.sampling_mode > 0
+                # positive_positions = [random.choice(self.node2pos[q])]
+                positive_positions = self.node2pos[q]
+
+            # select negative triplet(s)
+            negative_size = len(res) if self.negative_size == -1 else self.negative_size
+            negative_positions = self._get_negative_positions(q, negative_size)
+
+            for p, c in positive_positions:
+                res.append((q.description, p.description, c.description, 1, 1))
+
+            path = self.parent2paths[q]
+            if len(path) == 4:
+                res.append((path[2].description, path[1].description, path[3].description, 1, 1))
+
+            for p, c in negative_positions:
+                res.append(
+                    (
+                        q.description,
+                        p.description,
+                        c.description,
+                        int(p in self.node2parents[q]),
+                        int(c in self.node2children[q]),
+                    )
                 )
-        else:  # self.sampling_mode > 0
-            positive_positions = [random.choice(self.node2pos[q])]
+            random.shuffle(res)
 
-        # select negative triplet(s)
-        negative_size = len(res) if self.negative_size == -1 else self.negative_size
-        negative_positions = self._get_negative_positions(q, negative_size)
-
-        instruct = "You are a knowledgeable assistant capable of understanding hierarchical relationships between concepts. Your task is to determine if a candidate concept is a hypernym or hyponym of a given query concept.\nDetermine whether the following is true and answer 'Yes' or 'No'. {}"
-
-        local_instruct = (
-            'Query:"{}" '
-            + 'Hypernym Candidate:"{}" Is the candidate a hypernym of the query? <label_token> '
-            + 'Hyponym Candidate:"{}" Is the candidate a hyponym of the query? <label_token>'
-        )
-
-        for p, c in positive_positions:
-            res.append((q.description, p.description, c.description, 1, 1))
-        for p, c in negative_positions:
-            res.append(
-                (
-                    q.description,
-                    p.description,
-                    c.description,
-                    int(p in self.node2parents[q]),
-                    int(c in self.node2children[q]),
-                )
+            local_instruct = "# ".join(
+                [LOCAL_INSTRUCTION.format(i[0], i[1], i[2]) for i in res]
             )
-        random.shuffle(res)
+            input_text = INSTRUCTION.format(local_instruct)
 
-        local_instruct = "# ".join(
-            [local_instruct.format(i[0], i[1], i[2]) for i in res]
-        )
-        context = instruct.format(local_instruct)
+        else:
+            res = []
+            if self.mode == 'eval':
+                pairs = self.valid_data[index]
+            elif self.mode == 'test':
+                pairs = self.test_data[index]
+
+            local_instruct = (
+                'Query: "{}"\n'
+                + '1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
+                + LABEL_TOKEN
+            )
+
+            local_instruct = "# ".join(
+                [local_instruct.format(i[0].description, i[1].description) for i in pairs]
+            )
+            input_text = INSTRUCTION.format(local_instruct)
+
         llm_inputs = self.tokenizer(
-            context,
+            input_text,
             return_tensors="pt",
             add_special_tokens=True,
             truncation=True,
@@ -745,11 +768,9 @@ class RawDataset(Dataset):
             "input_ids": llm_inputs["input_ids"],
             "attention_mask": llm_inputs["attention_mask"],
             "position_ids": torch.arange(llm_inputs["input_ids"].shape[-1]).unsqueeze(0),
-            "text_inputs": None,
-            "labels": [i[2] for i in res] if self.mode == "train" else None,
-            "author": None,
-            "pubs": None,
-            "graph_emb": None,
+            "labels": [x for i in res for x in (i[3], i[4])] if self.mode == "train" else None,
+            "query": pairs[0][0] if self.mode != "train" else None,
+            "candidates": [pair[1] for pair in pairs] if self.mode != "train" else None,
         }
 
     def get_best_worst_siblings(self, parent, query, g=None, train=True):

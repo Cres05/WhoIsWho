@@ -1,0 +1,4111 @@
+[
+    {
+        "query": "gpt-2",
+        "true_parents": [
+            "transformers",
+            "autoregressive transformers"
+        ],
+        "predictions": [
+            "language model pre-training",
+            "language models",
+            "transformers",
+            "autoregressive transformers",
+            "code generation transformers",
+            "autoencoding transformers",
+            "likelihood-based generative models",
+            "language model components",
+            "textual inference models",
+            "generative models"
+        ]
+    },
+    {
+        "query": "adversarially learned inference",
+        "true_parents": [
+            "generative models"
+        ],
+        "predictions": [
+            "generative adversarial networks",
+            "likelihood-based generative models",
+            "textual inference models",
+            "representation learning",
+            "generative models",
+            "autoencoding transformers",
+            "image generation models",
+            "generative sequence models",
+            "output functions",
+            "adversarial training"
+        ]
+    },
+    {
+        "query": "sparse evolutionary training",
+        "true_parents": [
+            "sparsity"
+        ],
+        "predictions": [
+            "sparsity",
+            "model compression",
+            "adaptive computation",
+            "hybrid optimization",
+            "optimization",
+            "mask branches",
+            "pruning",
+            "output functions",
+            "meta-learning algorithms",
+            "light-weight neural networks"
+        ]
+    },
+    {
+        "query": "i-bert",
+        "true_parents": [
+            "transformers",
+            "autoencoding transformers"
+        ],
+        "predictions": [
+            "transformers",
+            "contextualized word embeddings",
+            "language models",
+            "textual inference models",
+            "language model pre-training",
+            "text instance representations",
+            "model compression",
+            "ternarization",
+            "light-weight neural networks",
+            "language model components"
+        ]
+    },
+    {
+        "query": "deepvit",
+        "true_parents": [
+            "image models",
+            "vision transformers"
+        ],
+        "predictions": [
+            "vision transformers",
+            "attention modules",
+            "transformers",
+            "synthesized attention mechanisms",
+            "image model blocks",
+            "image models",
+            "backbone architectures",
+            "autoencoding transformers",
+            "attention mechanisms",
+            "image representations"
+        ]
+    },
+    {
+        "query": "ternary weight splitting",
+        "true_parents": [
+            "ternarization"
+        ],
+        "predictions": [
+            "ternarization",
+            "hybrid optimization",
+            "language model pre-training",
+            "model compression",
+            "sparsity",
+            "language models",
+            "text instance representations",
+            "contextualized word embeddings",
+            "binary neural networks",
+            "network shrinking"
+        ]
+    },
+    {
+        "query": "ape-x dqn",
+        "true_parents": [
+            "q-learning networks"
+        ],
+        "predictions": [
+            "reinforcement learning frameworks",
+            "distributed reinforcement learning",
+            "actor-critic algorithms",
+            "hybrid parallel methods",
+            "policy gradient methods",
+            "meta-learning algorithms",
+            "q-learning networks",
+            "adaptive computation",
+            "randomized value functions",
+            "on-policy td control"
+        ]
+    },
+    {
+        "query": "switch ffn",
+        "true_parents": [
+            "feedforward networks"
+        ],
+        "predictions": [
+            "gated linear networks",
+            "feedforward networks",
+            "mixture-of-experts",
+            "light-weight neural networks",
+            "transformers",
+            "long-range interaction layers",
+            "feature extractors",
+            "attention modules",
+            "parameter sharing",
+            "output heads"
+        ]
+    },
+    {
+        "query": "residual gating mechanism to compose adverb-action representations",
+        "true_parents": [
+            "video-text retrieval models"
+        ],
+        "predictions": [
+            "text instance representations",
+            "representation learning",
+            "skip connections",
+            "contextualized word embeddings",
+            "attention modules",
+            "attention mechanisms",
+            "output heads",
+            "language model components",
+            "gated linear networks",
+            "skip connection blocks"
+        ]
+    },
+    {
+        "query": "animatable reconstruction of clothed humans",
+        "true_parents": [
+            "3d reconstruction"
+        ],
+        "predictions": [
+            "image manipulation models",
+            "image models",
+            "image generation models",
+            "3d reconstruction",
+            "3d representations",
+            "output functions",
+            "conditional image-to-image translation models",
+            "likelihood-based generative models",
+            "hybrid optimization",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "neighborhood attention",
+        "true_parents": [
+            "attention patterns",
+            "attention mechanisms",
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "vision transformers",
+            "attention",
+            "attention patterns",
+            "attention mechanisms",
+            "image representations",
+            "synthesized attention mechanisms",
+            "long-range interaction layers",
+            "transformers",
+            "image models"
+        ]
+    },
+    {
+        "query": "adaptive early-learning correction",
+        "true_parents": [
+            "semantic segmentation models"
+        ],
+        "predictions": [
+            "label correction",
+            "semantic segmentation models",
+            "semantic segmentation modules",
+            "image segmentation models",
+            "interactive semantic segmentation models",
+            "self-training methods",
+            "instance segmentation models",
+            "adaptive computation",
+            "video object segmentation models",
+            "fine-tuning"
+        ]
+    },
+    {
+        "query": "adversarial graph contrastive learning",
+        "true_parents": [
+            "graph representation learning"
+        ],
+        "predictions": [
+            "adversarial training",
+            "graph representation learning",
+            "graph models",
+            "representation learning",
+            "robust training",
+            "graph embeddings",
+            "robustness methods",
+            "adversarial attacks",
+            "graph data augmentation",
+            "self-supervised learning"
+        ]
+    },
+    {
+        "query": "color jitter",
+        "true_parents": [
+            "image data augmentation"
+        ],
+        "predictions": [
+            "image data augmentation",
+            "image manipulation models",
+            "video data augmentation",
+            "text data augmentation",
+            "feature extractors",
+            "robustness methods",
+            "text augmentation",
+            "image models",
+            "image representations",
+            "image restoration models"
+        ]
+    },
+    {
+        "query": "dilated convolution with learnable spacings",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "convolutional neural networks",
+            "feature extractors",
+            "convolutions",
+            "long-range interaction layers",
+            "image models",
+            "semantic segmentation models",
+            "semantic segmentation modules",
+            "image feature extractors",
+            "object detection modules",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "retrace",
+        "true_parents": [
+            "value function estimation"
+        ],
+        "predictions": [
+            "value function estimation",
+            "reinforcement learning frameworks",
+            "policy gradient methods",
+            "eligibility traces",
+            "q-learning networks",
+            "off-policy td control",
+            "actor-critic algorithms",
+            "randomized value functions",
+            "on-policy td control",
+            "offline reinforcement learning methods"
+        ]
+    },
+    {
+        "query": "shake-shake regularization",
+        "true_parents": [
+            "regularization"
+        ],
+        "predictions": [
+            "intra-layer parallel",
+            "regularization",
+            "auto parallel methods",
+            "robust training",
+            "hybrid optimization",
+            "hybrid parallel methods",
+            "ternarization",
+            "text data augmentation",
+            "ensembling",
+            "parameter sharing"
+        ]
+    },
+    {
+        "query": "mbert",
+        "true_parents": [
+            "language models"
+        ],
+        "predictions": [
+            "contextualized word embeddings",
+            "language model pre-training",
+            "language models",
+            "transformers",
+            "text instance representations",
+            "autoregressive transformers",
+            "language model components",
+            "autoencoding transformers",
+            "representation learning",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "all-attention layer",
+        "true_parents": [
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention patterns",
+            "transformers",
+            "language model components",
+            "autoregressive transformers",
+            "autoencoding transformers",
+            "attention",
+            "attention mechanisms",
+            "long-range interaction layers",
+            "synthesized attention mechanisms"
+        ]
+    },
+    {
+        "query": "adversarial model perturbation",
+        "true_parents": [
+            "optimization"
+        ],
+        "predictions": [
+            "robust training",
+            "adversarial training",
+            "adversarial attacks",
+            "adversarial image data augmentation",
+            "parameter norm penalties",
+            "output functions",
+            "loss functions",
+            "robustness methods",
+            "image manipulation models",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "lenet",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "convolutional neural networks",
+            "feature extractors",
+            "image models",
+            "image model blocks",
+            "pooling operations",
+            "image feature extractors",
+            "hybrid optimization",
+            "convolutions",
+            "feedforward networks"
+        ]
+    },
+    {
+        "query": "instance-level meta normalization",
+        "true_parents": [
+            "normalization"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "feature extractors",
+            "likelihood-based generative models",
+            "autoencoding transformers",
+            "text instance representations",
+            "distribution approximation",
+            "normalization",
+            "feature upsampling",
+            "representation learning",
+            "image representations"
+        ]
+    },
+    {
+        "query": "local interpretable model-agnostic explanations",
+        "true_parents": [
+            "interpretability"
+        ],
+        "predictions": [
+            "interpretability",
+            "feature extractors",
+            "output functions",
+            "representation learning",
+            "text instance representations",
+            "rule learners",
+            "taxonomy expansion models",
+            "miscellaneous components",
+            "heuristic search algorithms",
+            "textual inference models"
+        ]
+    },
+    {
+        "query": "geglu",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "adaptive activation functions",
+            "activation functions",
+            "output functions",
+            "gated linear networks",
+            "language model components",
+            "feedforward networks",
+            "adaptive computation",
+            "representation learning",
+            "hybrid optimization",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "leverage learning",
+        "true_parents": [
+            "fine-tuning"
+        ],
+        "predictions": [
+            "self-training methods",
+            "meta-learning algorithms",
+            "semi-supervised learning methods",
+            "prompt engineering",
+            "adaptive computation",
+            "automl",
+            "self-supervised learning",
+            "domain adaptation",
+            "fine-tuning",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "push pull convolutions",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "convolutions",
+            "feature extractors",
+            "representation learning",
+            "convolutional neural networks",
+            "pooling operations",
+            "feature upsampling",
+            "attention mechanisms",
+            "output functions",
+            "adaptive computation",
+            "image feature extractors"
+        ]
+    },
+    {
+        "query": "imghum",
+        "true_parents": [
+            "3d representations"
+        ],
+        "predictions": [
+            "likelihood-based generative models",
+            "image generation models",
+            "generative models",
+            "hybrid optimization",
+            "image manipulation models",
+            "conditional image-to-image translation models",
+            "autoencoding transformers",
+            "image models",
+            "image representations",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "detnet",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "object detection modules",
+            "oriented object detection models",
+            "feature extractors",
+            "object detection models",
+            "arbitrary object detectors",
+            "image models",
+            "light-weight neural networks",
+            "image model blocks",
+            "image feature extractors"
+        ]
+    },
+    {
+        "query": "absolute learning progress and gaussian mixture models for automatic curriculum learning",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "reinforcement learning frameworks",
+            "adaptive computation",
+            "hybrid optimization",
+            "likelihood-based generative models",
+            "offline reinforcement learning methods",
+            "prompt engineering",
+            "policy gradient methods",
+            "hyperparameter search",
+            "output functions"
+        ]
+    },
+    {
+        "query": "batch normalization",
+        "true_parents": [
+            "normalization"
+        ],
+        "predictions": [
+            "regularization",
+            "feature extractors",
+            "output functions",
+            "optimization",
+            "normalization",
+            "adaptive activation functions",
+            "activation functions",
+            "representation learning",
+            "hybrid optimization",
+            "adaptive computation"
+        ]
+    },
+    {
+        "query": "groupwise point convolution",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "convolutions",
+            "feature extractors",
+            "point cloud representations",
+            "graph representation learning",
+            "representation learning",
+            "output functions",
+            "3d representations",
+            "point cloud models",
+            "graph models",
+            "affinity functions"
+        ]
+    },
+    {
+        "query": "agglomerative contextual decomposition",
+        "true_parents": [
+            "interpretability"
+        ],
+        "predictions": [
+            "interpretability",
+            "feature extractors",
+            "representation learning",
+            "clustering",
+            "image decomposition models",
+            "explainable cnns",
+            "feature upsampling",
+            "output functions",
+            "affinity functions",
+            "text instance representations"
+        ]
+    },
+    {
+        "query": "nlogistic-sigmoid function",
+        "true_parents": [
+            "feedforward networks",
+            "activation functions"
+        ],
+        "predictions": [
+            "activation functions",
+            "output functions",
+            "affinity functions",
+            "math formula detection models",
+            "adaptive activation functions",
+            "likelihood-based generative models",
+            "probability distribution representation",
+            "interpretability",
+            "generalized linear models",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "models genesis",
+        "true_parents": [
+            "3d representations"
+        ],
+        "predictions": [
+            "self-supervised learning",
+            "image models",
+            "medical image models",
+            "feature extractors",
+            "image generation models",
+            "image representations",
+            "3d representations",
+            "image feature extractors",
+            "representation learning",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "hierarchical bilstm max pooling",
+        "true_parents": [
+            "sequence to sequence models"
+        ],
+        "predictions": [
+            "textual inference models",
+            "pooling operations",
+            "feature extractors",
+            "text instance representations",
+            "span representations",
+            "output functions",
+            "backbone architectures",
+            "text classification models",
+            "recurrent neural networks",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "fastspeech 2",
+        "true_parents": [
+            "text-to-speech models"
+        ],
+        "predictions": [
+            "text-to-speech models",
+            "autoencoding transformers",
+            "generative audio models",
+            "speech synthesis blocks",
+            "autoregressive transformers",
+            "generative sequence models",
+            "transformers",
+            "likelihood-based generative models",
+            "sequence to sequence models",
+            "sequence editing models"
+        ]
+    },
+    {
+        "query": "relu6",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "activation functions",
+            "output functions",
+            "adaptive activation functions",
+            "feature extractors",
+            "adaptive computation",
+            "ternarization",
+            "feature upsampling",
+            "image feature extractors",
+            "robotic manipulation models",
+            "robustness methods"
+        ]
+    },
+    {
+        "query": "convolutional gru",
+        "true_parents": [
+            "recurrent neural networks"
+        ],
+        "predictions": [
+            "convolutions",
+            "convolutional neural networks",
+            "feature extractors",
+            "recurrent neural networks",
+            "hybrid parallel methods",
+            "temporal convolutions",
+            "backbone architectures",
+            "sequence to sequence models",
+            "gated linear networks",
+            "explainable cnns"
+        ]
+    },
+    {
+        "query": "gaussian affinity",
+        "true_parents": [
+            "affinity functions"
+        ],
+        "predictions": [
+            "affinity functions",
+            "likelihood-based generative models",
+            "distribution approximation",
+            "feature extractors",
+            "probability distribution representation",
+            "kernel methods",
+            "output functions",
+            "taxonomy expansion models",
+            "representation learning",
+            "interpretability"
+        ]
+    },
+    {
+        "query": "spatially separable convolution",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "feature extractors",
+            "convolutions",
+            "image decomposition models",
+            "image feature extractors",
+            "output functions",
+            "image models",
+            "light-weight neural networks",
+            "image manipulation models",
+            "image representations",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "self-adversarial negative sampling",
+        "true_parents": [
+            "negative sampling"
+        ],
+        "predictions": [
+            "adversarial training",
+            "negative sampling",
+            "representation learning",
+            "meta-learning algorithms",
+            "prioritized sampling",
+            "text data augmentation",
+            "graph representation learning",
+            "likelihood-based generative models",
+            "text instance representations",
+            "latent variable sampling"
+        ]
+    },
+    {
+        "query": "predator",
+        "true_parents": [
+            "point cloud models"
+        ],
+        "predictions": [
+            "point cloud representations",
+            "point cloud models",
+            "3d representations",
+            "attention modules",
+            "taxonomy expansion models",
+            "output functions",
+            "adaptive computation",
+            "geometric matching",
+            "feature extractors",
+            "autoencoding transformers"
+        ]
+    },
+    {
+        "query": "focus",
+        "true_parents": [
+            "transformers"
+        ],
+        "predictions": [
+            "generalization",
+            "attention mechanisms",
+            "exploration strategies",
+            "interpretability",
+            "attention",
+            "contextualized word embeddings",
+            "ternarization",
+            "taxonomy expansion models",
+            "medical waveform analysis",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "procrustes",
+        "true_parents": [
+            "generalized linear models"
+        ],
+        "predictions": [
+            "geometric matching",
+            "optimization",
+            "feature extractors",
+            "3d representations",
+            "variational optimization",
+            "statistical inference",
+            "interpretability",
+            "image manipulation models",
+            "bijective transformation",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "panoptic fpn",
+        "true_parents": [
+            "feature extractors"
+        ],
+        "predictions": [
+            "semantic segmentation modules",
+            "semantic segmentation models",
+            "feature pyramid blocks",
+            "instance segmentation models",
+            "backbone architectures",
+            "object detection models",
+            "instance segmentation modules",
+            "video panoptic segmentation models",
+            "feature extractors",
+            "output heads"
+        ]
+    },
+    {
+        "query": "shufflenet",
+        "true_parents": [
+            "light-weight neural networks",
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "light-weight neural networks",
+            "backbone architectures",
+            "image models",
+            "convolutional neural networks",
+            "image model blocks",
+            "convolutions",
+            "model compression",
+            "adaptive computation",
+            "hybrid optimization",
+            "intra-layer parallel"
+        ]
+    },
+    {
+        "query": "boundary-aware segmentation network",
+        "true_parents": [
+            "semantic segmentation models"
+        ],
+        "predictions": [
+            "semantic segmentation models",
+            "semantic segmentation modules",
+            "instance segmentation modules",
+            "image segmentation models",
+            "convolutional neural networks",
+            "instance segmentation models",
+            "image models",
+            "medical image models",
+            "feature upsampling",
+            "interactive semantic segmentation models"
+        ]
+    },
+    {
+        "query": "pointer network",
+        "true_parents": [
+            "sequence to sequence models",
+            "recurrent neural networks"
+        ],
+        "predictions": [
+            "attention mechanisms",
+            "output functions",
+            "sequence to sequence models",
+            "attention modules",
+            "autoregressive transformers",
+            "generative sequence models",
+            "synthesized attention mechanisms",
+            "representation learning",
+            "sequence decoding methods",
+            "attention"
+        ]
+    },
+    {
+        "query": "masked modeling duo",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "autoencoding transformers",
+            "self-supervised learning",
+            "generative audio models",
+            "representation learning",
+            "language model pre-training",
+            "self-training methods",
+            "feature extractors",
+            "output functions",
+            "fine-tuning",
+            "likelihood-based generative models"
+        ]
+    },
+    {
+        "query": "bottleneck residual block",
+        "true_parents": [
+            "image model blocks",
+            "skip connection blocks"
+        ],
+        "predictions": [
+            "skip connection blocks",
+            "skip connections",
+            "image model blocks",
+            "convolutions",
+            "backbone architectures",
+            "light-weight neural networks",
+            "feature extractors",
+            "image feature extractors",
+            "image models",
+            "network shrinking"
+        ]
+    },
+    {
+        "query": "metaformer",
+        "true_parents": [
+            "image models"
+        ],
+        "predictions": [
+            "transformers",
+            "autoencoding transformers",
+            "autoregressive transformers",
+            "language model components",
+            "attention mechanisms",
+            "backbone architectures",
+            "code generation transformers",
+            "synthesized attention mechanisms",
+            "language model pre-training",
+            "language models"
+        ]
+    },
+    {
+        "query": "deflation",
+        "true_parents": [
+            "miscellaneous components"
+        ],
+        "predictions": [
+            "feature extractors",
+            "backbone architectures",
+            "image model blocks",
+            "convolutional neural networks",
+            "temporal convolutions",
+            "image models",
+            "image manipulation models",
+            "image feature extractors",
+            "hybrid optimization",
+            "convolutions"
+        ]
+    },
+    {
+        "query": "non-local operation",
+        "true_parents": [
+            "image feature extractors"
+        ],
+        "predictions": [
+            "attention mechanisms",
+            "long-range interaction layers",
+            "attention modules",
+            "feature extractors",
+            "skip connections",
+            "pooling operations",
+            "output functions",
+            "attention",
+            "representation learning",
+            "synthesized attention mechanisms"
+        ]
+    },
+    {
+        "query": "complex with n3 regularizer and relation prediction objective",
+        "true_parents": [
+            "graph embeddings"
+        ],
+        "predictions": [
+            "graph representation learning",
+            "regularization",
+            "parameter norm penalties",
+            "graph models",
+            "graph embeddings",
+            "output functions",
+            "loss functions",
+            "relation extraction models",
+            "representation learning",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "talking-heads attention",
+        "true_parents": [
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention patterns",
+            "language model components",
+            "attention mechanisms",
+            "synthesized attention mechanisms",
+            "attention",
+            "output heads",
+            "transformers",
+            "output functions",
+            "skip connections"
+        ]
+    },
+    {
+        "query": "augmix",
+        "true_parents": [
+            "image data augmentation"
+        ],
+        "predictions": [
+            "image data augmentation",
+            "video data augmentation",
+            "text data augmentation",
+            "image manipulation models",
+            "adversarial image data augmentation",
+            "robustness methods",
+            "image models",
+            "text augmentation",
+            "robust training",
+            "trajectory data augmentation"
+        ]
+    },
+    {
+        "query": "message passing neural network",
+        "true_parents": [
+            "graph models"
+        ],
+        "predictions": [
+            "graph models",
+            "graph representation learning",
+            "graph embeddings",
+            "representation learning",
+            "distributed methods",
+            "feature extractors",
+            "output functions",
+            "structured prediction",
+            "long-range interaction layers",
+            "graphics models"
+        ]
+    },
+    {
+        "query": "kungfu",
+        "true_parents": [
+            "auto parallel methods",
+            "distributed methods"
+        ],
+        "predictions": [
+            "adaptive computation",
+            "distributed methods",
+            "meta-learning algorithms",
+            "fine-tuning",
+            "output functions",
+            "hybrid optimization",
+            "hybrid parallel methods",
+            "auto parallel methods",
+            "control and decision systems",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "simple neural attention meta-learner",
+        "true_parents": [
+            "recurrent neural networks"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "synthesized attention mechanisms",
+            "attention modules",
+            "temporal convolutions",
+            "attention mechanisms",
+            "attention",
+            "rl transformers",
+            "representation learning",
+            "sequence to sequence models",
+            "autoregressive transformers"
+        ]
+    },
+    {
+        "query": "amsbound",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "adaptive computation",
+            "learning rate schedules",
+            "optimization",
+            "robust training",
+            "stochastic optimization",
+            "robustness methods",
+            "feature upsampling",
+            "policy gradient methods",
+            "initialization"
+        ]
+    },
+    {
+        "query": "pgc-dgcnn",
+        "true_parents": [
+            "graph models"
+        ],
+        "predictions": [
+            "graph representation learning",
+            "graph models",
+            "feature extractors",
+            "convolutional neural networks",
+            "representation learning",
+            "convolutions",
+            "long-range interaction layers",
+            "graph embeddings",
+            "feature upsampling",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "artemisinin optimization based on malaria therapy: algorithm and applications to medical image segmentation",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "optimization",
+            "adaptive computation",
+            "heuristic search algorithms",
+            "image segmentation models",
+            "meta-learning algorithms",
+            "output functions",
+            "variational optimization",
+            "stochastic optimization",
+            "hyperparameter search"
+        ]
+    },
+    {
+        "query": "population based training",
+        "true_parents": [
+            "hyperparameter search",
+            "optimization"
+        ],
+        "predictions": [
+            "adaptive computation",
+            "hybrid optimization",
+            "parameter sharing",
+            "hyperparameter search",
+            "stochastic optimization",
+            "meta-learning algorithms",
+            "hybrid parallel methods",
+            "optimization",
+            "self-training methods",
+            "output functions"
+        ]
+    },
+    {
+        "query": "spatial and channel se blocks",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention mechanisms",
+            "synthesized attention mechanisms",
+            "feature extractors",
+            "hybrid parallel methods",
+            "semantic segmentation modules",
+            "intra-layer parallel",
+            "auto parallel methods",
+            "representation learning",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "tree ensemble to rules",
+        "true_parents": [
+            "interpretability"
+        ],
+        "predictions": [
+            "rule-based systems",
+            "interpretability",
+            "ensembling",
+            "output functions",
+            "rule learners",
+            "feature extractors",
+            "textual inference models",
+            "document understanding models",
+            "text classification models",
+            "representation learning"
+        ]
+    },
+    {
+        "query": "balanced l1 loss",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "output functions",
+            "object detection models",
+            "object detection modules",
+            "optimization",
+            "arbitrary object detectors",
+            "parameter norm penalties",
+            "oriented object detection models",
+            "robustness methods",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "residual attention network",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention modules",
+            "skip connections",
+            "synthesized attention mechanisms",
+            "skip connection blocks",
+            "attention mechanisms",
+            "image models",
+            "backbone architectures",
+            "feature extractors",
+            "light-weight neural networks",
+            "image model blocks"
+        ]
+    },
+    {
+        "query": "global-local attention",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention patterns",
+            "attention mechanisms",
+            "attention",
+            "language model components",
+            "transformers",
+            "autoregressive transformers",
+            "long-range interaction layers",
+            "sequence to sequence models",
+            "autoencoding transformers"
+        ]
+    },
+    {
+        "query": "fastformer",
+        "true_parents": [
+            "transformers"
+        ],
+        "predictions": [
+            "attention modules",
+            "transformers",
+            "autoregressive transformers",
+            "attention mechanisms",
+            "language model components",
+            "autoencoding transformers",
+            "synthesized attention mechanisms",
+            "attention",
+            "long-range interaction layers",
+            "language models"
+        ]
+    },
+    {
+        "query": "automatic structured variational inference",
+        "true_parents": [
+            "variational optimization"
+        ],
+        "predictions": [
+            "likelihood-based generative models",
+            "approximate inference",
+            "distribution approximation",
+            "probability distribution representation",
+            "output functions",
+            "generative models",
+            "latent variable sampling",
+            "hybrid optimization",
+            "variational optimization",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "glove embeddings",
+        "true_parents": [
+            "static word embeddings",
+            "word embeddings"
+        ],
+        "predictions": [
+            "word embeddings",
+            "static word embeddings",
+            "text instance representations",
+            "representation learning",
+            "contextualized word embeddings",
+            "feature extractors",
+            "distributed methods",
+            "input embedding factorization",
+            "language model pre-training",
+            "textual meaning"
+        ]
+    },
+    {
+        "query": "overfitting conditional diffusion model",
+        "true_parents": [
+            "meta-learning algorithms"
+        ],
+        "predictions": [
+            "generative models",
+            "likelihood-based generative models",
+            "diffusion models",
+            "generative sequence models",
+            "generative training",
+            "autoencoding transformers",
+            "image generation models",
+            "probability distribution representation",
+            "language model pre-training",
+            "tabular data generation"
+        ]
+    },
+    {
+        "query": "dfh",
+        "true_parents": [
+            "2d parallel distributed methods"
+        ],
+        "predictions": [
+            "hyperparameter search",
+            "question answering models",
+            "text data augmentation",
+            "interpretability",
+            "text augmentation",
+            "taxonomy expansion models",
+            "adversarial image data augmentation",
+            "active learning",
+            "textual inference models",
+            "neural architecture search"
+        ]
+    },
+    {
+        "query": "retinanet-rs",
+        "true_parents": [
+            "object detection models",
+            "one-stage object detection models"
+        ],
+        "predictions": [
+            "object detection models",
+            "object detection modules",
+            "oriented object detection models",
+            "arbitrary object detectors",
+            "anchor generation modules",
+            "feature upsampling",
+            "one-stage object detection models",
+            "convolutional neural networks",
+            "feature extractors",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "siamese network",
+        "true_parents": [
+            "twin networks"
+        ],
+        "predictions": [
+            "twin networks",
+            "parameter sharing",
+            "image models",
+            "output functions",
+            "representation learning",
+            "feature extractors",
+            "self-supervised learning",
+            "backbone architectures",
+            "image representations",
+            "vision and language pre-trained models"
+        ]
+    },
+    {
+        "query": "pixelcnn",
+        "true_parents": [
+            "likelihood-based generative models",
+            "generative models"
+        ],
+        "predictions": [
+            "likelihood-based generative models",
+            "image models",
+            "generative models",
+            "image manipulation models",
+            "image generation models",
+            "image decomposition models",
+            "image representations",
+            "image model blocks",
+            "output functions",
+            "distribution approximation"
+        ]
+    },
+    {
+        "query": "cspdensenet",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "image models",
+            "arbitrary object detectors",
+            "backbone architectures",
+            "image feature extractors",
+            "convolutional neural networks",
+            "oriented object detection models",
+            "object detection modules",
+            "feature extractors",
+            "object detection models",
+            "image model blocks"
+        ]
+    },
+    {
+        "query": "model editor networks with gradient decomposition",
+        "true_parents": [
+            "meta-learning algorithms"
+        ],
+        "predictions": [
+            "interpretability",
+            "output functions",
+            "feature extractors",
+            "fine-tuning",
+            "explainable cnns",
+            "sequence editing models",
+            "graph representation learning",
+            "adaptive computation",
+            "representation learning",
+            "output heads"
+        ]
+    },
+    {
+        "query": "mixing adam and sgd",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "adaptive computation",
+            "learning rate schedules",
+            "large batch optimization",
+            "optimization",
+            "meta-learning algorithms",
+            "stochastic optimization",
+            "hybrid parallel methods",
+            "fine-tuning",
+            "distributed methods"
+        ]
+    },
+    {
+        "query": "pipetransformer",
+        "true_parents": [
+            "distributed methods",
+            "2d parallel distributed methods",
+            "hybrid parallel methods"
+        ],
+        "predictions": [
+            "auto parallel methods",
+            "hybrid parallel methods",
+            "adaptive computation",
+            "sharded data parallel methods",
+            "language model components",
+            "data parallel methods",
+            "distributed methods",
+            "transformers",
+            "language models",
+            "code generation transformers"
+        ]
+    },
+    {
+        "query": "contextualized topic models",
+        "true_parents": [
+            "clustering",
+            "document embeddings",
+            "topic embeddings",
+            "contextualized word embeddings"
+        ],
+        "predictions": [
+            "word embeddings",
+            "text instance representations",
+            "autoencoding transformers",
+            "contextualized word embeddings",
+            "representation learning",
+            "feature extractors",
+            "document embeddings",
+            "topic embeddings",
+            "language model pre-training",
+            "likelihood-based generative models"
+        ]
+    },
+    {
+        "query": "reformer",
+        "true_parents": [
+            "transformers"
+        ],
+        "predictions": [
+            "transformers",
+            "attention modules",
+            "attention mechanisms",
+            "synthesized attention mechanisms",
+            "autoencoding transformers",
+            "autoregressive transformers",
+            "language model components",
+            "representation learning",
+            "text instance representations",
+            "language model pre-training"
+        ]
+    },
+    {
+        "query": "spherical graph convolutional network",
+        "true_parents": [
+            "graph models"
+        ],
+        "predictions": [
+            "graph models",
+            "graph representation learning",
+            "output functions",
+            "feature extractors",
+            "convolutions",
+            "convolutional neural networks",
+            "graph embeddings",
+            "3d representations",
+            "representation learning",
+            "image models"
+        ]
+    },
+    {
+        "query": "gpipe",
+        "true_parents": [
+            "model parallel methods",
+            "distributed methods",
+            "synchronous pipeline parallel"
+        ],
+        "predictions": [
+            "model parallel methods",
+            "hybrid parallel methods",
+            "auto parallel methods",
+            "distributed methods",
+            "synchronous pipeline parallel",
+            "sharded data parallel methods",
+            "intra-layer parallel",
+            "data parallel methods",
+            "asynchronous pipeline parallel",
+            "2d parallel distributed methods"
+        ]
+    },
+    {
+        "query": "hypergraph self-attention",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "graph models",
+            "graph representation learning",
+            "long-range interaction layers",
+            "attention modules",
+            "representation learning",
+            "attention mechanisms",
+            "action recognition models",
+            "synthesized attention mechanisms",
+            "attention",
+            "graph embeddings"
+        ]
+    },
+    {
+        "query": "ft-transformer",
+        "true_parents": [
+            "deep tabular learning"
+        ],
+        "predictions": [
+            "autoencoding transformers",
+            "feature extractors",
+            "transformers",
+            "tokenizers",
+            "backbone architectures",
+            "autoregressive transformers",
+            "attention mechanisms",
+            "language model pre-training",
+            "deep tabular learning",
+            "text instance representations"
+        ]
+    },
+    {
+        "query": "natural gradient descent",
+        "true_parents": [
+            "optimization"
+        ],
+        "predictions": [
+            "optimization",
+            "variational optimization",
+            "adaptive computation",
+            "hybrid optimization",
+            "meta-learning algorithms",
+            "stochastic optimization",
+            "representation learning",
+            "output functions",
+            "likelihood-based generative models",
+            "value function estimation"
+        ]
+    },
+    {
+        "query": "spatio-temporal attention lstm",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "action recognition models",
+            "action recognition blocks",
+            "attention modules",
+            "feature extractors",
+            "video recognition models",
+            "recurrent neural networks",
+            "representation learning",
+            "attention",
+            "synthesized attention mechanisms",
+            "attention mechanisms"
+        ]
+    },
+    {
+        "query": "multi-dconv-head attention",
+        "true_parents": [
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention mechanisms",
+            "language model components",
+            "synthesized attention mechanisms",
+            "attention patterns",
+            "attention",
+            "convolutions",
+            "transformers",
+            "output heads",
+            "temporal convolutions"
+        ]
+    },
+    {
+        "query": "musiq",
+        "true_parents": [
+            "vision transformers",
+            "image quality models"
+        ],
+        "predictions": [
+            "image models",
+            "vision transformers",
+            "image quality models",
+            "image restoration models",
+            "synthesized attention mechanisms",
+            "autoencoding transformers",
+            "attention mechanisms",
+            "transformers",
+            "image representations",
+            "autoregressive transformers"
+        ]
+    },
+    {
+        "query": "linear layer",
+        "true_parents": [
+            "feedforward networks"
+        ],
+        "predictions": [
+            "feature extractors",
+            "feedforward networks",
+            "output functions",
+            "hybrid optimization",
+            "generalized linear models",
+            "miscellaneous components",
+            "activation functions",
+            "adaptive computation",
+            "likelihood-based generative models",
+            "bijective transformation"
+        ]
+    },
+    {
+        "query": "base boosting",
+        "true_parents": [
+            "generalized additive models"
+        ],
+        "predictions": [
+            "ensembling",
+            "output functions",
+            "non-parametric regression",
+            "adaptive computation",
+            "generalized additive models",
+            "rule learners",
+            "statistical inference",
+            "value function estimation",
+            "non-parametric classification",
+            "meta-learning algorithms"
+        ]
+    },
+    {
+        "query": "meuzz",
+        "true_parents": [
+            "hybrid optimization",
+            "hybrid fuzzing"
+        ],
+        "predictions": [
+            "hybrid fuzzing",
+            "hybrid optimization",
+            "adaptive computation",
+            "meta-learning algorithms",
+            "hybrid parallel methods",
+            "feature extractors",
+            "robustness methods",
+            "self-training methods",
+            "output functions",
+            "trajectory data augmentation"
+        ]
+    },
+    {
+        "query": "dpn block",
+        "true_parents": [
+            "image model blocks",
+            "skip connection blocks"
+        ],
+        "predictions": [
+            "image models",
+            "image model blocks",
+            "backbone architectures",
+            "image feature extractors",
+            "feature extractors",
+            "convolutional neural networks",
+            "convolutions",
+            "skip connections",
+            "skip connection blocks",
+            "image manipulation models"
+        ]
+    },
+    {
+        "query": "rotary position embedding",
+        "true_parents": [
+            "position embeddings"
+        ],
+        "predictions": [
+            "position embeddings",
+            "attention mechanisms",
+            "representation learning",
+            "language model components",
+            "feature extractors",
+            "long-range interaction layers",
+            "attention modules",
+            "transformers",
+            "synthesized attention mechanisms",
+            "3d representations"
+        ]
+    },
+    {
+        "query": "continual learning through adjustment suppression and sparsity promotion",
+        "true_parents": [
+            "lifelong learning"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "fine-tuning",
+            "adaptive computation",
+            "lifelong learning",
+            "representation learning",
+            "generalization",
+            "sparsity",
+            "self-training methods",
+            "pruning",
+            "optimization"
+        ]
+    },
+    {
+        "query": "heterogeneous molecular graph neural network",
+        "true_parents": [
+            "graph models"
+        ],
+        "predictions": [
+            "graph models",
+            "graph representation learning",
+            "graph embeddings",
+            "representation learning",
+            "feature extractors",
+            "attention mechanisms",
+            "synthesized attention mechanisms",
+            "feature upsampling",
+            "output functions",
+            "miscellaneous components"
+        ]
+    },
+    {
+        "query": "audiovisual slowfast network",
+        "true_parents": [
+            "multi-modal methods",
+            "video recognition models"
+        ],
+        "predictions": [
+            "video recognition models",
+            "vision and language pre-trained models",
+            "feature extractors",
+            "multi-modal methods",
+            "hybrid parallel methods",
+            "output heads",
+            "backbone architectures",
+            "rendezvous",
+            "video-text retrieval models",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "dynamic convolution",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "synthesized attention mechanisms",
+            "representation learning",
+            "convolutions",
+            "attention modules",
+            "convolutional neural networks",
+            "feature extractors",
+            "temporal convolutions",
+            "auto parallel methods",
+            "light-weight neural networks",
+            "image models"
+        ]
+    },
+    {
+        "query": "swiglu",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "activation functions",
+            "adaptive activation functions",
+            "output functions",
+            "adaptive computation",
+            "feature upsampling",
+            "approximate inference",
+            "interpretability",
+            "rendezvous",
+            "attention mechanisms",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "window-based discriminator",
+        "true_parents": [
+            "discriminators"
+        ],
+        "predictions": [
+            "discriminators",
+            "generative adversarial networks",
+            "generative audio models",
+            "feature extractors",
+            "audio model blocks",
+            "image generation models",
+            "generative models",
+            "generative discrimination",
+            "output functions",
+            "generative sequence models"
+        ]
+    },
+    {
+        "query": "denoised smoothing",
+        "true_parents": [
+            "robustness methods"
+        ],
+        "predictions": [
+            "image restoration models",
+            "robust training",
+            "image denoising models",
+            "robustness methods",
+            "feature extractors",
+            "output functions",
+            "image manipulation models",
+            "text data augmentation",
+            "adversarial image data augmentation",
+            "representation learning"
+        ]
+    },
+    {
+        "query": "gradient harmonizing mechanism c",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "adaptive computation",
+            "output functions",
+            "anchor supervision",
+            "density ratio learning",
+            "anchor generation modules",
+            "adaptive activation functions",
+            "hybrid optimization",
+            "fine-tuning",
+            "value function estimation"
+        ]
+    },
+    {
+        "query": "large-scale information network embedding",
+        "true_parents": [
+            "graph embeddings"
+        ],
+        "predictions": [
+            "graph representation learning",
+            "graph embeddings",
+            "graph models",
+            "representation learning",
+            "feature extractors",
+            "graph data augmentation",
+            "output functions",
+            "optimization",
+            "word embeddings",
+            "text instance representations"
+        ]
+    },
+    {
+        "query": "inception-c",
+        "true_parents": [
+            "image model blocks"
+        ],
+        "predictions": [
+            "feature extractors",
+            "image feature extractors",
+            "image model blocks",
+            "image models",
+            "backbone architectures",
+            "image manipulation models",
+            "convolutional neural networks",
+            "output heads",
+            "image representations",
+            "object detection modules"
+        ]
+    },
+    {
+        "query": "spreadsheetcoder",
+        "true_parents": [
+            "spreadsheet formula prediction models"
+        ],
+        "predictions": [
+            "spreadsheet formula prediction models",
+            "text instance representations",
+            "code generation transformers",
+            "language model pre-training",
+            "contextualized word embeddings",
+            "sequence to sequence models",
+            "textual inference models",
+            "table parsing models",
+            "math formula detection models",
+            "language models"
+        ]
+    },
+    {
+        "query": "polynomial",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "output functions",
+            "hybrid optimization",
+            "adaptive computation",
+            "trajectory data augmentation",
+            "lifelong learning",
+            "affinity functions",
+            "ternarization",
+            "feature upsampling",
+            "latent variable sampling",
+            "degridding"
+        ]
+    },
+    {
+        "query": "masked autoencoder",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "autoencoding transformers",
+            "representation learning",
+            "self-supervised learning",
+            "generative models",
+            "language models",
+            "likelihood-based generative models",
+            "feature extractors",
+            "text instance representations",
+            "language model components",
+            "language model pre-training"
+        ]
+    },
+    {
+        "query": "structure retaining cyclegan",
+        "true_parents": [
+            "image generation models"
+        ],
+        "predictions": [
+            "conditional image-to-image translation models",
+            "unpaired image-to-image translation",
+            "reversible image conversion models",
+            "image manipulation models",
+            "image generation models",
+            "generative models",
+            "few-shot image-to-image translation",
+            "style transfer modules",
+            "style transfer models",
+            "image representations"
+        ]
+    },
+    {
+        "query": "twins-svt",
+        "true_parents": [
+            "vision transformers"
+        ],
+        "predictions": [
+            "vision transformers",
+            "transformers",
+            "image feature extractors",
+            "attention modules",
+            "image model blocks",
+            "autoencoding transformers",
+            "vision and language pre-trained models",
+            "feature extractors",
+            "attention mechanisms",
+            "image representations"
+        ]
+    },
+    {
+        "query": "clusterfit",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "self-supervised learning",
+            "representation learning",
+            "clustering",
+            "feature extractors",
+            "image models",
+            "image feature extractors",
+            "self-training methods",
+            "semi-supervised learning methods",
+            "image representations",
+            "text instance representations"
+        ]
+    },
+    {
+        "query": "wavegan",
+        "true_parents": [
+            "generative audio models"
+        ],
+        "predictions": [
+            "generative audio models",
+            "generative adversarial networks",
+            "likelihood-based generative models",
+            "generative training",
+            "audio model blocks",
+            "generative models",
+            "diffusion models",
+            "generative sequence models",
+            "feature upsampling",
+            "speech synthesis blocks"
+        ]
+    },
+    {
+        "query": "quanttree histograms",
+        "true_parents": [
+            "distribution approximation"
+        ],
+        "predictions": [
+            "feature extractors",
+            "tabular data generation",
+            "counting methods",
+            "distribution approximation",
+            "distributions",
+            "statistical inference",
+            "output functions",
+            "non-parametric classification",
+            "likelihood-based generative models",
+            "probability distribution representation"
+        ]
+    },
+    {
+        "query": "bilayer convolutional neural network",
+        "true_parents": [
+            "instance segmentation modules"
+        ],
+        "predictions": [
+            "convolutional neural networks",
+            "image models",
+            "feature extractors",
+            "image feature extractors",
+            "convolutions",
+            "image representations",
+            "feature upsampling",
+            "object detection modules",
+            "backbone architectures",
+            "pooling operations"
+        ]
+    },
+    {
+        "query": "fastspeech 2s",
+        "true_parents": [
+            "text-to-speech models"
+        ],
+        "predictions": [
+            "text-to-speech models",
+            "speech synthesis blocks",
+            "generative audio models",
+            "sequence to sequence models",
+            "audio model blocks",
+            "likelihood-based generative models",
+            "hybrid optimization",
+            "generative sequence models",
+            "autoregressive transformers",
+            "language models"
+        ]
+    },
+    {
+        "query": "deeplabv2",
+        "true_parents": [
+            "semantic segmentation models"
+        ],
+        "predictions": [
+            "semantic segmentation modules",
+            "semantic segmentation models",
+            "image segmentation models",
+            "image models",
+            "convolutional neural networks",
+            "feature extractors",
+            "backbone architectures",
+            "interactive semantic segmentation models",
+            "instance segmentation models",
+            "image semantic segmentation metric"
+        ]
+    },
+    {
+        "query": "second-order clipped stochastic optimization",
+        "true_parents": [
+            "optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "adaptive computation",
+            "stochastic optimization",
+            "meta-learning algorithms",
+            "optimization",
+            "output functions",
+            "large batch optimization",
+            "value function estimation",
+            "loss functions",
+            "variational optimization"
+        ]
+    },
+    {
+        "query": "l1 regularization",
+        "true_parents": [
+            "parameter norm penalties",
+            "regularization"
+        ],
+        "predictions": [
+            "parameter norm penalties",
+            "regularization",
+            "sparsity",
+            "loss functions",
+            "network shrinking",
+            "optimization",
+            "pruning",
+            "output functions",
+            "representation learning",
+            "hyperparameter search"
+        ]
+    },
+    {
+        "query": "global-and-local attention",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention",
+            "synthesized attention mechanisms",
+            "explainable cnns",
+            "attention mechanisms",
+            "image models",
+            "attention patterns",
+            "feature extractors",
+            "representation learning",
+            "interpretability"
+        ]
+    },
+    {
+        "query": "cspdensenet-elastic",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "convolutional neural networks",
+            "feature extractors",
+            "object detection modules",
+            "image models",
+            "image feature extractors",
+            "arbitrary object detectors",
+            "object detection models",
+            "image model blocks",
+            "oriented object detection models"
+        ]
+    },
+    {
+        "query": "max pooling",
+        "true_parents": [
+            "pooling operations"
+        ],
+        "predictions": [
+            "pooling operations",
+            "feature extractors",
+            "output functions",
+            "downsampling",
+            "image feature extractors",
+            "convolutions",
+            "image models",
+            "image representations",
+            "convolutional neural networks",
+            "representation learning"
+        ]
+    },
+    {
+        "query": "vision transformer",
+        "true_parents": [
+            "image models",
+            "vision transformers"
+        ],
+        "predictions": [
+            "vision transformers",
+            "transformers",
+            "image models",
+            "autoencoding transformers",
+            "image feature extractors",
+            "autoregressive transformers",
+            "image representations",
+            "image model blocks",
+            "backbone architectures",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "variational autoencoder",
+        "true_parents": [
+            "likelihood-based generative models",
+            "generative models",
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "generative models",
+            "image generation models",
+            "likelihood-based generative models",
+            "approximate inference",
+            "representation learning",
+            "autoencoding transformers",
+            "distribution approximation",
+            "generative video models",
+            "textual inference models",
+            "generative sequence models"
+        ]
+    },
+    {
+        "query": "spatial and channel-wise attention-based convolutional neural network",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "synthesized attention mechanisms",
+            "attention modules",
+            "image models",
+            "attention mechanisms",
+            "convolutional neural networks",
+            "explainable cnns",
+            "attention",
+            "feature extractors",
+            "convolutions",
+            "generative sequence models"
+        ]
+    },
+    {
+        "query": "adahessian",
+        "true_parents": [
+            "stochastic optimization",
+            "optimization"
+        ],
+        "predictions": [
+            "stochastic optimization",
+            "hybrid optimization",
+            "adaptive computation",
+            "optimization",
+            "output functions",
+            "loss functions",
+            "large batch optimization",
+            "auto parallel methods",
+            "heuristic search algorithms",
+            "meta-learning algorithms"
+        ]
+    },
+    {
+        "query": "self-adjusting smooth l1 loss",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "adaptive computation",
+            "robust training",
+            "adaptive activation functions",
+            "arbitrary object detectors",
+            "output functions",
+            "object detection models",
+            "object detection modules",
+            "feature extractors",
+            "parameter norm penalties"
+        ]
+    },
+    {
+        "query": "visual parsing",
+        "true_parents": [
+            "vision and language pre-trained models"
+        ],
+        "predictions": [
+            "vision and language pre-trained models",
+            "transformers",
+            "vision transformers",
+            "autoencoding transformers",
+            "representation learning",
+            "autoregressive transformers",
+            "attention mechanisms",
+            "multi-modal methods",
+            "feature extractors",
+            "self-supervised learning"
+        ]
+    },
+    {
+        "query": "single headed attention rnn",
+        "true_parents": [
+            "recurrent neural networks",
+            "language models"
+        ],
+        "predictions": [
+            "language models",
+            "recurrent neural networks",
+            "language model components",
+            "light-weight neural networks",
+            "text instance representations",
+            "backbone architectures",
+            "sequence to sequence models",
+            "autoregressive transformers",
+            "likelihood-based generative models",
+            "copy mechanisms"
+        ]
+    },
+    {
+        "query": "enhanced seq2seq autoencoder via contrastive learning",
+        "true_parents": [
+            "transformers"
+        ],
+        "predictions": [
+            "sequence to sequence models",
+            "autoencoding transformers",
+            "autoregressive transformers",
+            "language models",
+            "transformers",
+            "self-supervised learning",
+            "generative sequence models",
+            "text data augmentation",
+            "sequence editing models",
+            "generative models"
+        ]
+    },
+    {
+        "query": "self-learning",
+        "true_parents": [
+            "lifelong learning"
+        ],
+        "predictions": [
+            "active learning",
+            "lifelong learning",
+            "self-training methods",
+            "exploration strategies",
+            "generalization",
+            "meta-learning algorithms",
+            "interpretability",
+            "adaptive computation",
+            "automl",
+            "attention"
+        ]
+    },
+    {
+        "query": "paramcrop",
+        "true_parents": [
+            "generative video models",
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "video data augmentation",
+            "feature extractors",
+            "image models",
+            "hybrid optimization",
+            "image manipulation models",
+            "output functions",
+            "video recognition models",
+            "self-supervised learning",
+            "3d representations",
+            "image feature extractors"
+        ]
+    },
+    {
+        "query": "spectral detuning",
+        "true_parents": [
+            "pre-fine-tuning weight recovery",
+            "adversarial attacks",
+            "inference attack",
+            "fine-tuning"
+        ],
+        "predictions": [
+            "fine-tuning",
+            "pre-fine-tuning weight recovery",
+            "language model pre-training",
+            "autoencoding transformers",
+            "diffusion models",
+            "parameter sharing",
+            "feature extractors",
+            "hybrid optimization",
+            "likelihood-based generative models",
+            "knowledge distillation"
+        ]
+    },
+    {
+        "query": "high-level backbone",
+        "true_parents": [
+            "feature extractors"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "generalization",
+            "interpretability",
+            "graph models",
+            "feature extractors",
+            "taxonomy expansion models",
+            "multi-scale analysis",
+            "representation learning",
+            "output functions",
+            "miscellaneous components"
+        ]
+    },
+    {
+        "query": "douzero",
+        "true_parents": [
+            "card game models"
+        ],
+        "predictions": [
+            "hybrid parallel methods",
+            "auto parallel methods",
+            "reinforcement learning frameworks",
+            "distributed reinforcement learning",
+            "value function estimation",
+            "taxonomy expansion models",
+            "imitation learning methods",
+            "actor-critic algorithms",
+            "output functions",
+            "robotic manipulation models"
+        ]
+    },
+    {
+        "query": "spatiotemporal point inference network",
+        "true_parents": [
+            "attention mechanisms",
+            "graph representation learning"
+        ],
+        "predictions": [
+            "output functions",
+            "textual inference models",
+            "feature extractors",
+            "trajectory prediction models",
+            "localization models",
+            "likelihood-based generative models",
+            "inference extrapolation",
+            "adaptive computation",
+            "hybrid optimization",
+            "trajectory data augmentation"
+        ]
+    },
+    {
+        "query": "herring",
+        "true_parents": [
+            "parameter server methods",
+            "distributed methods",
+            "hybrid parallel methods"
+        ],
+        "predictions": [
+            "sharded data parallel methods",
+            "hybrid parallel methods",
+            "auto parallel methods",
+            "parameter server methods",
+            "data parallel methods",
+            "model parallel methods",
+            "distributed methods",
+            "parameter sharing",
+            "asynchronous data parallel",
+            "intra-layer parallel"
+        ]
+    },
+    {
+        "query": "fast-yolov2",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "object detection models",
+            "object detection modules",
+            "light-weight neural networks",
+            "arbitrary object detectors",
+            "oriented object detection models",
+            "one-stage object detection models",
+            "backbone architectures",
+            "image models",
+            "feature extractors",
+            "image model blocks"
+        ]
+    },
+    {
+        "query": "child-tuning",
+        "true_parents": [
+            "fine-tuning"
+        ],
+        "predictions": [
+            "fine-tuning",
+            "language model pre-training",
+            "hyperparameter search",
+            "parameter sharing",
+            "feature extractors",
+            "optimization",
+            "mask branches",
+            "pre-fine-tuning weight recovery",
+            "representation learning",
+            "language model components"
+        ]
+    },
+    {
+        "query": "convolutional time-domain audio separation network",
+        "true_parents": [
+            "temporal convolutions",
+            "speech separation models",
+            "music source separation",
+            "speech enhancement"
+        ],
+        "predictions": [
+            "speech separation models",
+            "convolutions",
+            "temporal convolutions",
+            "speech enhancement",
+            "feature extractors",
+            "representation learning",
+            "generative audio models",
+            "audio model blocks",
+            "convolutional neural networks",
+            "music source separation"
+        ]
+    },
+    {
+        "query": "hybrid task cascade",
+        "true_parents": [
+            "object detection models",
+            "instance segmentation models"
+        ],
+        "predictions": [
+            "instance segmentation models",
+            "instance segmentation modules",
+            "image segmentation models",
+            "object detection modules",
+            "video instance segmentation models",
+            "arbitrary object detectors",
+            "object detection models",
+            "semantic segmentation modules",
+            "video object segmentation models",
+            "image models"
+        ]
+    },
+    {
+        "query": "residual multi-layer perceptrons",
+        "true_parents": [
+            "image models"
+        ],
+        "predictions": [
+            "image models",
+            "skip connection blocks",
+            "feedforward networks",
+            "skip connections",
+            "image feature extractors",
+            "image model blocks",
+            "feature extractors",
+            "representation learning",
+            "backbone architectures",
+            "output functions"
+        ]
+    },
+    {
+        "query": "contrastive cross-view mutual information maximization",
+        "true_parents": [
+            "representation learning"
+        ],
+        "predictions": [
+            "representation learning",
+            "self-supervised learning",
+            "multi-modal methods",
+            "feature extractors",
+            "manifold disentangling",
+            "output functions",
+            "image representations",
+            "pose estimation models",
+            "image models",
+            "likelihood-based generative models"
+        ]
+    },
+    {
+        "query": "meta face recognition",
+        "true_parents": [
+            "face recognition models"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "face recognition models",
+            "representation learning",
+            "domain adaptation",
+            "fine-tuning",
+            "image models",
+            "feature extractors",
+            "self-supervised learning",
+            "self-training methods",
+            "generalization"
+        ]
+    },
+    {
+        "query": "hybrid-deconvolution",
+        "true_parents": [
+            "convolutional neural networks"
+        ],
+        "predictions": [
+            "feature extractors",
+            "image feature extractors",
+            "feature upsampling",
+            "image restoration models",
+            "image decomposition models",
+            "image manipulation models",
+            "representation learning",
+            "convolutions",
+            "image models",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "qhadam",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "adaptive computation",
+            "meta-learning algorithms",
+            "hybrid parallel methods",
+            "optimization",
+            "learning rate schedules",
+            "distributed methods",
+            "stochastic optimization",
+            "large batch optimization",
+            "momentum rules"
+        ]
+    },
+    {
+        "query": "aggregated learning",
+        "true_parents": [
+            "information bottleneck"
+        ],
+        "predictions": [
+            "information bottleneck",
+            "representation learning",
+            "feature extractors",
+            "text instance representations",
+            "meta-learning algorithms",
+            "text classification models",
+            "output functions",
+            "loss functions",
+            "model compression",
+            "semi-supervised learning methods"
+        ]
+    },
+    {
+        "query": "online normalization",
+        "true_parents": [
+            "normalization"
+        ],
+        "predictions": [
+            "adaptive computation",
+            "normalization",
+            "adaptive activation functions",
+            "learning rate schedules",
+            "loss functions",
+            "output functions",
+            "hybrid optimization",
+            "text instance representations",
+            "sample re-weighting",
+            "optimization"
+        ]
+    },
+    {
+        "query": "autoencoders",
+        "true_parents": [
+            "dimensionality reduction"
+        ],
+        "predictions": [
+            "feature extractors",
+            "representation learning",
+            "dimensionality reduction",
+            "generative models",
+            "self-supervised learning",
+            "output functions",
+            "text instance representations",
+            "autoencoding transformers",
+            "image models",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "resnest",
+        "true_parents": [
+            "convolutional neural networks",
+            "image models"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "skip connection blocks",
+            "image models",
+            "image model blocks",
+            "skip connections",
+            "image feature extractors",
+            "attention modules",
+            "image representations",
+            "light-weight neural networks",
+            "neural architecture search"
+        ]
+    },
+    {
+        "query": "3d dynamic scene graph",
+        "true_parents": [
+            "3d representations"
+        ],
+        "predictions": [
+            "graph models",
+            "3d representations",
+            "augmented reality methods",
+            "graphics models",
+            "graph representation learning",
+            "taxonomy expansion models",
+            "point cloud models",
+            "3d object detection models",
+            "video panoptic segmentation models",
+            "robotic manipulation models"
+        ]
+    },
+    {
+        "query": "lbl2vec",
+        "true_parents": [
+            "text classification models"
+        ],
+        "predictions": [
+            "feature extractors",
+            "text instance representations",
+            "representation learning",
+            "word embeddings",
+            "textual inference models",
+            "document embeddings",
+            "text classification models",
+            "topic embeddings",
+            "contextualized word embeddings",
+            "sentence embeddings"
+        ]
+    },
+    {
+        "query": "timesformer",
+        "true_parents": [
+            "generative video models"
+        ],
+        "predictions": [
+            "vision transformers",
+            "video recognition models",
+            "transformers",
+            "autoencoding transformers",
+            "action recognition models",
+            "attention mechanisms",
+            "attention modules",
+            "feature extractors",
+            "image models",
+            "autoregressive transformers"
+        ]
+    },
+    {
+        "query": "droppath",
+        "true_parents": [
+            "regularization"
+        ],
+        "predictions": [
+            "intra-layer parallel",
+            "feature extractors",
+            "skip connection blocks",
+            "mask branches",
+            "skip connections",
+            "representation learning",
+            "sharded data parallel methods",
+            "pruning",
+            "long-range interaction layers",
+            "regularization"
+        ]
+    },
+    {
+        "query": "reglu",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "activation functions",
+            "adaptive activation functions",
+            "output functions",
+            "feature extractors",
+            "gated linear networks",
+            "adaptive computation",
+            "output heads",
+            "hybrid optimization",
+            "robotic manipulation models",
+            "bijective transformation"
+        ]
+    },
+    {
+        "query": "gblock",
+        "true_parents": [
+            "skip connection blocks",
+            "audio model blocks"
+        ],
+        "predictions": [
+            "speech synthesis blocks",
+            "audio model blocks",
+            "text-to-speech models",
+            "autoencoding transformers",
+            "skip connection blocks",
+            "skip connections",
+            "feature extractors",
+            "output heads",
+            "backbone architectures",
+            "temporal convolutions"
+        ]
+    },
+    {
+        "query": "meta pseudo labels",
+        "true_parents": [
+            "semi-supervised learning methods"
+        ],
+        "predictions": [
+            "self-training methods",
+            "semi-supervised learning methods",
+            "anchor supervision",
+            "meta-learning algorithms",
+            "self-supervised learning",
+            "output functions",
+            "knowledge distillation",
+            "label correction",
+            "representation learning",
+            "likelihood-based generative models"
+        ]
+    },
+    {
+        "query": "neural adjoint method",
+        "true_parents": [
+            "optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "optimization",
+            "meta-learning algorithms",
+            "representation learning",
+            "output functions",
+            "likelihood-based generative models",
+            "interpretability",
+            "feature extractors",
+            "approximate inference",
+            "fine-tuning"
+        ]
+    },
+    {
+        "query": "safety-llamas",
+        "true_parents": [
+            "generative training"
+        ],
+        "predictions": [
+            "ternarization",
+            "interpretability",
+            "output functions",
+            "deep tabular learning",
+            "trajectory data augmentation",
+            "rule learners",
+            "portrait matting models",
+            "tabular data generation",
+            "taxonomy expansion models",
+            "approximate inference"
+        ]
+    },
+    {
+        "query": "accuracy-robustness area",
+        "true_parents": [
+            "adversarial training"
+        ],
+        "predictions": [
+            "adversarial attacks",
+            "output functions",
+            "robust training",
+            "robustness methods",
+            "generalization",
+            "adversarial image data augmentation",
+            "adversarial training",
+            "loss functions",
+            "affinity functions",
+            "out-of-distribution example detection"
+        ]
+    },
+    {
+        "query": "adagpr",
+        "true_parents": [
+            "graph models"
+        ],
+        "predictions": [
+            "graph representation learning",
+            "graph embeddings",
+            "adaptive computation",
+            "graph models",
+            "graph data augmentation",
+            "output functions",
+            "domain adaptation",
+            "representation learning",
+            "convolutions",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "hardelish",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "activation functions",
+            "adaptive activation functions",
+            "output functions",
+            "adaptive computation",
+            "feature extractors",
+            "loss functions",
+            "ternarization",
+            "interpretability",
+            "hybrid fuzzing",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "symbolic deep learning",
+        "true_parents": [
+            "graph models",
+            "interpretability"
+        ],
+        "predictions": [
+            "output functions",
+            "interpretability",
+            "representation learning",
+            "generalization",
+            "affinity functions",
+            "inference extrapolation",
+            "likelihood-based generative models",
+            "feature extractors",
+            "adaptive computation",
+            "statistical inference"
+        ]
+    },
+    {
+        "query": "cyclegan",
+        "true_parents": [
+            "generative models",
+            "generative adversarial networks",
+            "unpaired image-to-image translation"
+        ],
+        "predictions": [
+            "conditional image-to-image translation models",
+            "image generation models",
+            "few-shot image-to-image translation",
+            "generative models",
+            "reversible image conversion models",
+            "unpaired image-to-image translation",
+            "image manipulation models",
+            "generative adversarial networks",
+            "generative training",
+            "image models"
+        ]
+    },
+    {
+        "query": "distdgl",
+        "true_parents": [
+            "distributed methods"
+        ],
+        "predictions": [
+            "hybrid parallel methods",
+            "graph representation learning",
+            "graph models",
+            "auto parallel methods",
+            "distributed methods",
+            "data parallel methods",
+            "sharded data parallel methods",
+            "graph embeddings",
+            "adaptive computation",
+            "model parallel methods"
+        ]
+    },
+    {
+        "query": "coordconv",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "convolutional neural networks",
+            "feature extractors",
+            "convolutions",
+            "feature upsampling",
+            "image models",
+            "image feature extractors",
+            "representation learning",
+            "image representations",
+            "explainable cnns",
+            "output functions"
+        ]
+    },
+    {
+        "query": "randomized leaky rectified linear units",
+        "true_parents": [
+            "activation functions"
+        ],
+        "predictions": [
+            "adaptive activation functions",
+            "activation functions",
+            "output functions",
+            "feature extractors",
+            "loss functions",
+            "adaptive computation",
+            "text data augmentation",
+            "representation learning",
+            "image manipulation models",
+            "generalization"
+        ]
+    },
+    {
+        "query": "r-cnn",
+        "true_parents": [
+            "object detection models"
+        ],
+        "predictions": [
+            "region proposal",
+            "object detection modules",
+            "roi feature extractors",
+            "convolutional neural networks",
+            "feature extractors",
+            "object detection models",
+            "image models",
+            "image feature extractors",
+            "arbitrary object detectors",
+            "oriented object detection models"
+        ]
+    },
+    {
+        "query": "emqap",
+        "true_parents": [
+            "question answering models"
+        ],
+        "predictions": [
+            "question answering models",
+            "document understanding models",
+            "language model pre-training",
+            "text instance representations",
+            "language models",
+            "span representations",
+            "textual inference models",
+            "trajectory data augmentation",
+            "language model components",
+            "rendezvous"
+        ]
+    },
+    {
+        "query": "3-augment",
+        "true_parents": [
+            "image data augmentation"
+        ],
+        "predictions": [
+            "text augmentation",
+            "text data augmentation",
+            "feature upsampling",
+            "hybrid optimization",
+            "trajectory data augmentation",
+            "interpretability",
+            "feature extractors",
+            "attention mechanisms",
+            "exploration strategies",
+            "taxonomy expansion models"
+        ]
+    },
+    {
+        "query": "roberta",
+        "true_parents": [
+            "transformers",
+            "autoencoding transformers"
+        ],
+        "predictions": [
+            "language models",
+            "transformers",
+            "language model pre-training",
+            "text instance representations",
+            "contextualized word embeddings",
+            "language model components",
+            "autoregressive transformers",
+            "textual inference models",
+            "autoencoding transformers",
+            "fine-tuning"
+        ]
+    },
+    {
+        "query": "bayesian reward extrapolation",
+        "true_parents": [
+            "bayesian reinforcement learning"
+        ],
+        "predictions": [
+            "imitation learning methods",
+            "feature extractors",
+            "representation learning",
+            "bayesian reinforcement learning",
+            "output functions",
+            "meta-learning algorithms",
+            "value function estimation",
+            "likelihood-based generative models",
+            "approximate inference",
+            "self-supervised learning"
+        ]
+    },
+    {
+        "query": "mesh-tensorflow",
+        "true_parents": [
+            "model parallel methods",
+            "distributed methods",
+            "intra-layer parallel"
+        ],
+        "predictions": [
+            "auto parallel methods",
+            "hybrid parallel methods",
+            "model parallel methods",
+            "sharded data parallel methods",
+            "distributed methods",
+            "data parallel methods",
+            "asynchronous data parallel",
+            "output functions",
+            "replicated data parallel",
+            "intra-layer parallel"
+        ]
+    },
+    {
+        "query": "contrastive multiview coding",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "self-supervised learning",
+            "representation learning",
+            "multi-modal methods",
+            "feature extractors",
+            "image representations",
+            "text instance representations",
+            "image models",
+            "output functions",
+            "video-text retrieval models",
+            "autoencoding transformers"
+        ]
+    },
+    {
+        "query": "cross-attention module",
+        "true_parents": [
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "vision transformers",
+            "attention mechanisms",
+            "language model components",
+            "transformers",
+            "feature extractors",
+            "synthesized attention mechanisms",
+            "autoencoding transformers",
+            "skip connections",
+            "attention"
+        ]
+    },
+    {
+        "query": "batchchannel normalization",
+        "true_parents": [
+            "normalization"
+        ],
+        "predictions": [
+            "adaptive activation functions",
+            "feature extractors",
+            "output functions",
+            "regularization",
+            "feature upsampling",
+            "image model blocks",
+            "parameter norm penalties",
+            "image models",
+            "robustness methods",
+            "network shrinking"
+        ]
+    },
+    {
+        "query": "basicvsr",
+        "true_parents": [
+            "video super-resolution models"
+        ],
+        "predictions": [
+            "video super-resolution models",
+            "image restoration models",
+            "image super-resolution models",
+            "super-resolution models",
+            "image manipulation models",
+            "video interpolation models",
+            "feature upsampling",
+            "feature extractors",
+            "image scaling strategies",
+            "video quality models"
+        ]
+    },
+    {
+        "query": "bifpn",
+        "true_parents": [
+            "feature extractors",
+            "feature pyramid blocks"
+        ],
+        "predictions": [
+            "feature extractors",
+            "arbitrary object detectors",
+            "feature pyramid blocks",
+            "image feature extractors",
+            "object detection models",
+            "object detection modules",
+            "oriented object detection models",
+            "image models",
+            "semantic segmentation modules",
+            "convolutional neural networks"
+        ]
+    },
+    {
+        "query": "pyramid vision transformer v2",
+        "true_parents": [
+            "image models",
+            "vision transformers"
+        ],
+        "predictions": [
+            "vision transformers",
+            "image models",
+            "arbitrary object detectors",
+            "attention modules",
+            "transformers",
+            "video recognition models",
+            "instance segmentation models",
+            "backbone architectures",
+            "image representations",
+            "object detection models"
+        ]
+    },
+    {
+        "query": "wasserstein gan (gradient penalty)",
+        "true_parents": [
+            "generative adversarial networks"
+        ],
+        "predictions": [
+            "generative adversarial networks",
+            "generative training",
+            "likelihood-based generative models",
+            "image generation models",
+            "generative models",
+            "parameter norm penalties",
+            "adversarial training",
+            "discriminators",
+            "unpaired image-to-image translation",
+            "few-shot image-to-image translation"
+        ]
+    },
+    {
+        "query": "distance shrinking with angular marginalizing loss",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "feature extractors",
+            "representation learning",
+            "discriminators",
+            "dimensionality reduction",
+            "output functions",
+            "robustness methods",
+            "network shrinking",
+            "affinity functions",
+            "regularization"
+        ]
+    },
+    {
+        "query": "monte carlo dropout",
+        "true_parents": [
+            "interpretability"
+        ],
+        "predictions": [
+            "approximate inference",
+            "likelihood-based generative models",
+            "latent variable sampling",
+            "regularization",
+            "robustness methods",
+            "statistical inference",
+            "output functions",
+            "distribution approximation",
+            "adaptive computation",
+            "value function estimation"
+        ]
+    },
+    {
+        "query": "pythia",
+        "true_parents": [
+            "language models"
+        ],
+        "predictions": [
+            "autoregressive transformers",
+            "language models",
+            "autoencoding transformers",
+            "likelihood-based generative models",
+            "code generation transformers",
+            "generative sequence models",
+            "language model pre-training",
+            "transformers",
+            "textual inference models",
+            "language model components"
+        ]
+    },
+    {
+        "query": "convolution",
+        "true_parents": [
+            "convolutions"
+        ],
+        "predictions": [
+            "convolutions",
+            "feature extractors",
+            "parameter sharing",
+            "kernel methods",
+            "image models",
+            "output functions",
+            "image feature extractors",
+            "image manipulation models",
+            "representation learning",
+            "image representations"
+        ]
+    },
+    {
+        "query": "contrastive bert",
+        "true_parents": [
+            "rl transformers"
+        ],
+        "predictions": [
+            "language model pre-training",
+            "reinforcement learning frameworks",
+            "self-supervised learning",
+            "rl transformers",
+            "representation learning",
+            "attention mechanisms",
+            "language models",
+            "text instance representations",
+            "contextualized word embeddings",
+            "hybrid parallel methods"
+        ]
+    },
+    {
+        "query": "distribution-induced bidirectional generative adversarial network for graph representation learning",
+        "true_parents": [
+            "graph embeddings"
+        ],
+        "predictions": [
+            "graph representation learning",
+            "graph embeddings",
+            "graph models",
+            "representation learning",
+            "graph data augmentation",
+            "likelihood-based generative models",
+            "feature extractors",
+            "latent variable sampling",
+            "self-supervised learning",
+            "probability distribution representation"
+        ]
+    },
+    {
+        "query": "reinforce",
+        "true_parents": [
+            "policy gradient methods"
+        ],
+        "predictions": [
+            "policy gradient methods",
+            "reinforcement learning frameworks",
+            "actor-critic algorithms",
+            "value function estimation",
+            "on-policy td control",
+            "output functions",
+            "optimization",
+            "meta-learning algorithms",
+            "stochastic optimization",
+            "randomized value functions"
+        ]
+    },
+    {
+        "query": "balanced selection",
+        "true_parents": [
+            "active learning"
+        ],
+        "predictions": [
+            "generalization",
+            "hybrid optimization",
+            "interpretability",
+            "adaptive computation",
+            "rendezvous",
+            "taxonomy expansion models",
+            "intra-layer parallel",
+            "hybrid fuzzing",
+            "rule learners",
+            "attention mechanisms"
+        ]
+    },
+    {
+        "query": "filter response normalization",
+        "true_parents": [
+            "normalization"
+        ],
+        "predictions": [
+            "convolutional neural networks",
+            "convolutions",
+            "activation functions",
+            "feature extractors",
+            "image models",
+            "adaptive activation functions",
+            "output functions",
+            "explainable cnns",
+            "ternarization",
+            "normalization"
+        ]
+    },
+    {
+        "query": "bigbigan",
+        "true_parents": [
+            "generative models",
+            "generative adversarial networks",
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "image generation models",
+            "generative models",
+            "generative adversarial networks",
+            "likelihood-based generative models",
+            "image models",
+            "image manipulation models",
+            "conditional image-to-image translation models",
+            "autoencoding transformers",
+            "image model blocks",
+            "backbone architectures"
+        ]
+    },
+    {
+        "query": "superpixelgridcut, superpixelgridmean, superpixelgridmix",
+        "true_parents": [
+            "image data augmentation"
+        ],
+        "predictions": [
+            "image data augmentation",
+            "semantic segmentation modules",
+            "feature upsampling",
+            "image manipulation models",
+            "video data augmentation",
+            "instance segmentation modules",
+            "robustness methods",
+            "text augmentation",
+            "instance segmentation models",
+            "semantic segmentation models"
+        ]
+    },
+    {
+        "query": "zero-bounded log-sum-exp & pairwise rank-based loss",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "output functions",
+            "value function estimation",
+            "affinity functions",
+            "likelihood-based generative models",
+            "robustness methods",
+            "hybrid optimization",
+            "structured prediction",
+            "adaptive computation",
+            "discriminators"
+        ]
+    },
+    {
+        "query": "cornernet",
+        "true_parents": [
+            "object detection models",
+            "one-stage object detection models"
+        ],
+        "predictions": [
+            "object detection modules",
+            "object detection models",
+            "arbitrary object detectors",
+            "oriented object detection models",
+            "image models",
+            "region proposal",
+            "localization models",
+            "one-stage object detection models",
+            "convolutional neural networks",
+            "instance segmentation models"
+        ]
+    },
+    {
+        "query": "you only hypothesize once",
+        "true_parents": [
+            "point cloud models"
+        ],
+        "predictions": [
+            "point cloud representations",
+            "3d representations",
+            "feature extractors",
+            "geometric matching",
+            "output functions",
+            "feature matching",
+            "feature upsampling",
+            "representation learning",
+            "point cloud models",
+            "localization models"
+        ]
+    },
+    {
+        "query": "roiwarp",
+        "true_parents": [
+            "roi feature extractors"
+        ],
+        "predictions": [
+            "roi feature extractors",
+            "feature upsampling",
+            "feature extractors",
+            "oriented object detection models",
+            "pooling operations",
+            "region proposal",
+            "instance segmentation modules",
+            "object detection modules",
+            "output functions",
+            "instance segmentation models"
+        ]
+    },
+    {
+        "query": "gan hinge loss",
+        "true_parents": [
+            "loss functions"
+        ],
+        "predictions": [
+            "loss functions",
+            "generative adversarial networks",
+            "image generation models",
+            "discriminators",
+            "generative models",
+            "likelihood-based generative models",
+            "generative training",
+            "output functions",
+            "adversarial training",
+            "image manipulation models"
+        ]
+    },
+    {
+        "query": "receptive field block",
+        "true_parents": [
+            "feature extractors"
+        ],
+        "predictions": [
+            "feature extractors",
+            "pooling operations",
+            "object detection modules",
+            "light-weight neural networks",
+            "convolutional neural networks",
+            "image feature extractors",
+            "image model blocks",
+            "representation learning",
+            "convolutions",
+            "image models"
+        ]
+    },
+    {
+        "query": "nearest-neighbor contrastive learning of visual representations",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "self-supervised learning",
+            "image representations",
+            "representation learning",
+            "feature extractors",
+            "image feature extractors",
+            "image models",
+            "twin networks",
+            "video data augmentation",
+            "likelihood-based generative models",
+            "image retrieval models"
+        ]
+    },
+    {
+        "query": "momentumized, adaptive, dual averaged gradient",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "adaptive computation",
+            "large batch optimization",
+            "optimization",
+            "stochastic optimization",
+            "meta-learning algorithms",
+            "hybrid parallel methods",
+            "generalization",
+            "auto parallel methods",
+            "variational optimization"
+        ]
+    },
+    {
+        "query": "modular interactive vos",
+        "true_parents": [
+            "video object segmentation models"
+        ],
+        "predictions": [
+            "semantic segmentation modules",
+            "video instance segmentation models",
+            "interactive semantic segmentation models",
+            "instance segmentation models",
+            "video object segmentation models",
+            "arbitrary object detectors",
+            "instance segmentation modules",
+            "semantic segmentation models",
+            "image segmentation models",
+            "image models"
+        ]
+    },
+    {
+        "query": "parrot",
+        "true_parents": [
+            "imitation learning methods",
+            "cache replacement models"
+        ],
+        "predictions": [
+            "imitation learning methods",
+            "meta-learning algorithms",
+            "cache replacement models",
+            "copy mechanisms",
+            "feature extractors",
+            "rule learners",
+            "representation learning",
+            "output functions",
+            "hybrid optimization",
+            "offline reinforcement learning methods"
+        ]
+    },
+    {
+        "query": "cross-covariance attention",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention mechanisms",
+            "synthesized attention mechanisms",
+            "feature extractors",
+            "language model components",
+            "attention",
+            "transformers",
+            "output functions",
+            "autoencoding transformers",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "path length regularization",
+        "true_parents": [
+            "regularization"
+        ],
+        "predictions": [
+            "likelihood-based generative models",
+            "generative models",
+            "adversarial image data augmentation",
+            "image generation models",
+            "conditional image-to-image translation models",
+            "parameter norm penalties",
+            "latent variable sampling",
+            "generative training",
+            "unpaired image-to-image translation",
+            "regularization"
+        ]
+    },
+    {
+        "query": "self-cure network",
+        "true_parents": [
+            "regularization"
+        ],
+        "predictions": [
+            "attention modules",
+            "self-training methods",
+            "image models",
+            "representation learning",
+            "output functions",
+            "face recognition models",
+            "feature extractors",
+            "attention mechanisms",
+            "attention",
+            "autoencoding transformers"
+        ]
+    },
+    {
+        "query": "magface",
+        "true_parents": [
+            "face recognition models"
+        ],
+        "predictions": [
+            "loss functions",
+            "feature extractors",
+            "face recognition models",
+            "image models",
+            "image feature extractors",
+            "output functions",
+            "image representations",
+            "representation learning",
+            "image quality models",
+            "face restoration models"
+        ]
+    },
+    {
+        "query": "inception-b",
+        "true_parents": [
+            "image model blocks"
+        ],
+        "predictions": [
+            "image model blocks",
+            "image models",
+            "backbone architectures",
+            "feature extractors",
+            "image manipulation models",
+            "image feature extractors",
+            "image representations",
+            "convolutional neural networks",
+            "skip connection blocks",
+            "object detection modules"
+        ]
+    },
+    {
+        "query": "concatenated skip connection",
+        "true_parents": [
+            "skip connections"
+        ],
+        "predictions": [
+            "skip connection blocks",
+            "skip connections",
+            "feature extractors",
+            "backbone architectures",
+            "image models",
+            "output functions",
+            "feedforward networks",
+            "image feature extractors",
+            "representation learning",
+            "parameter sharing"
+        ]
+    },
+    {
+        "query": "memory-associated differential learning",
+        "true_parents": [
+            "semi-supervised learning methods"
+        ],
+        "predictions": [
+            "meta-learning algorithms",
+            "textual inference models",
+            "taxonomy expansion models",
+            "generalization",
+            "self-supervised learning",
+            "representation learning",
+            "adaptive computation",
+            "self-training methods",
+            "interpretability",
+            "working memory models"
+        ]
+    },
+    {
+        "query": "memory network",
+        "true_parents": [
+            "working memory models"
+        ],
+        "predictions": [
+            "textual inference models",
+            "likelihood-based generative models",
+            "working memory models",
+            "text instance representations",
+            "representation learning",
+            "copy mechanisms",
+            "language model components",
+            "output functions",
+            "language models",
+            "entity retrieval models"
+        ]
+    },
+    {
+        "query": "swapping assignments between views",
+        "true_parents": [
+            "self-supervised learning"
+        ],
+        "predictions": [
+            "self-supervised learning",
+            "video data augmentation",
+            "image data augmentation",
+            "representation learning",
+            "self-training methods",
+            "text augmentation",
+            "feature extractors",
+            "image manipulation models",
+            "adversarial image data augmentation",
+            "trajectory data augmentation"
+        ]
+    },
+    {
+        "query": "cutblur",
+        "true_parents": [
+            "image data augmentation"
+        ],
+        "predictions": [
+            "image manipulation models",
+            "image restoration models",
+            "feature upsampling",
+            "image super-resolution models",
+            "image data augmentation",
+            "video data augmentation",
+            "image scaling strategies",
+            "video super-resolution models",
+            "super-resolution models",
+            "feature extractors"
+        ]
+    },
+    {
+        "query": "adaptive meta optimizer",
+        "true_parents": [
+            "stochastic optimization"
+        ],
+        "predictions": [
+            "hybrid optimization",
+            "meta-learning algorithms",
+            "optimization",
+            "adaptive computation",
+            "hybrid parallel methods",
+            "stochastic optimization",
+            "variational optimization",
+            "automl",
+            "auto parallel methods",
+            "large batch optimization"
+        ]
+    },
+    {
+        "query": "location sensitive attention",
+        "true_parents": [
+            "attention mechanisms"
+        ],
+        "predictions": [
+            "attention",
+            "attention modules",
+            "attention patterns",
+            "synthesized attention mechanisms",
+            "autoregressive transformers",
+            "attention mechanisms",
+            "language model components",
+            "transformers",
+            "autoencoding transformers",
+            "feature upsampling"
+        ]
+    },
+    {
+        "query": "voxel r-cnn",
+        "true_parents": [
+            "point cloud models",
+            "3d object detection models"
+        ],
+        "predictions": [
+            "3d object detection models",
+            "object detection models",
+            "object detection modules",
+            "feature extractors",
+            "arbitrary object detectors",
+            "point cloud representations",
+            "oriented object detection models",
+            "point cloud models",
+            "3d representations",
+            "anchor generation modules"
+        ]
+    },
+    {
+        "query": "low-level backbone",
+        "true_parents": [
+            "feature extractors"
+        ],
+        "predictions": [
+            "backbone architectures",
+            "feature extractors",
+            "representation learning",
+            "light-weight neural networks",
+            "image feature extractors",
+            "image models",
+            "graph representation learning",
+            "pooling operations",
+            "text instance representations",
+            "image representations"
+        ]
+    },
+    {
+        "query": "spatial attention module",
+        "true_parents": [
+            "image model blocks",
+            "attention modules"
+        ],
+        "predictions": [
+            "attention modules",
+            "attention mechanisms",
+            "feature extractors",
+            "pooling operations",
+            "convolutional neural networks",
+            "explainable cnns",
+            "attention patterns",
+            "attention",
+            "image representations",
+            "image feature extractors"
+        ]
+    },
+    {
+        "query": "dynamic algorithm configuration",
+        "true_parents": [
+            "hyperparameter search"
+        ],
+        "predictions": [
+            "hyperparameter search",
+            "optimization",
+            "hybrid optimization",
+            "adaptive computation",
+            "stochastic optimization",
+            "automl",
+            "meta-learning algorithms",
+            "control and decision systems",
+            "efficient planning",
+            "generalization"
+        ]
+    },
+    {
+        "query": "true online td lambda",
+        "true_parents": [
+            "on-policy td control"
+        ],
+        "predictions": [
+            "eligibility traces",
+            "on-policy td control",
+            "policy gradient methods",
+            "reinforcement learning frameworks",
+            "value function estimation",
+            "actor-critic algorithms",
+            "off-policy td control",
+            "meta-learning algorithms",
+            "adaptive computation",
+            "hybrid optimization"
+        ]
+    },
+    {
+        "query": "variational inference",
+        "true_parents": [
+            "dimensionality reduction"
+        ],
+        "predictions": [
+            "approximate inference",
+            "generative models",
+            "distribution approximation",
+            "statistical inference",
+            "likelihood-based generative models",
+            "variational optimization",
+            "probability distribution representation",
+            "latent variable sampling",
+            "optimization",
+            "graphics models"
+        ]
+    },
+    {
+        "query": "deep deterministic policy gradient",
+        "true_parents": [
+            "policy gradient methods"
+        ],
+        "predictions": [
+            "actor-critic algorithms",
+            "policy gradient methods",
+            "reinforcement learning frameworks",
+            "value function estimation",
+            "output functions",
+            "on-policy td control",
+            "q-learning networks",
+            "randomized value functions",
+            "imitation learning methods",
+            "control and decision systems"
+        ]
+    },
+    {
+        "query": "hourglass module",
+        "true_parents": [
+            "image model blocks"
+        ],
+        "predictions": [
+            "pose estimation models",
+            "feature extractors",
+            "image model blocks",
+            "feature upsampling",
+            "image models",
+            "image feature extractors",
+            "pose estimation blocks",
+            "semantic segmentation modules",
+            "semantic segmentation models",
+            "convolutional neural networks"
+        ]
+    },
+    {
+        "query": "autosync",
+        "true_parents": [
+            "auto parallel methods",
+            "distributed methods"
+        ],
+        "predictions": [
+            "auto parallel methods",
+            "sharded data parallel methods",
+            "distributed methods",
+            "hybrid optimization",
+            "hybrid parallel methods",
+            "data parallel methods",
+            "optimization",
+            "adaptive computation",
+            "asynchronous data parallel",
+            "intra-layer parallel"
+        ]
+    },
+    {
+        "query": "zoomnet",
+        "true_parents": [
+            "pose estimation models"
+        ],
+        "predictions": [
+            "pose estimation models",
+            "output heads",
+            "pose estimation blocks",
+            "6d pose estimation models",
+            "feature extractors",
+            "image models",
+            "instance segmentation models",
+            "position recovery models",
+            "backbone architectures",
+            "image manipulation models"
+        ]
+    },
+    {
+        "query": "enet",
+        "true_parents": [
+            "semantic segmentation models"
+        ],
+        "predictions": [
+            "semantic segmentation models",
+            "image models",
+            "semantic segmentation modules",
+            "light-weight neural networks",
+            "backbone architectures",
+            "image segmentation models",
+            "feature extractors",
+            "instance segmentation models",
+            "convolutional neural networks",
+            "interactive semantic segmentation models"
+        ]
+    },
+    {
+        "query": "mdtvsfa",
+        "true_parents": [
+            "video quality models"
+        ],
+        "predictions": [
+            "neural architecture search",
+            "degridding",
+            "hybrid optimization",
+            "rule learners",
+            "interpretability",
+            "ternarization",
+            "information bottleneck",
+            "robustness methods",
+            "momentum rules",
+            "output functions"
+        ]
+    },
+    {
+        "query": "syntax heat parse tree",
+        "true_parents": [
+            "interpretability"
+        ],
+        "predictions": [
+            "interpretability",
+            "layout annotation models",
+            "dependency parsers",
+            "structured prediction",
+            "language model components",
+            "output functions",
+            "feature extractors",
+            "text instance representations",
+            "document understanding models",
+            "textual inference models"
+        ]
+    }
+]

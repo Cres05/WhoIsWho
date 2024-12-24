@@ -37,7 +37,7 @@ from transformers import (
     LlamaTokenizer
 )
 from argparse import ArgumentParser
-from dataset import MAGDataset, RawDataset
+from dataset import DataCollatorForPWC, MAGDataset, RawDataset
 from trainer import GLMTrainer
 from arguments import ModelArguments, DataTrainingArguments, GLMTrainingArguments
 from peft import get_peft_model, LoraConfig, TaskType, PeftModel
@@ -154,14 +154,26 @@ dataset = RawDataset(
     raw_graph_dataset,
     sampling_mode=1,
     negative_size=9,
-    max_pos_size=1,
+    max_pos_size=5,
     expand_factor=40,
     cache_refresh_time=64,
     test_topk=-1,
     tokenizer=tokenizer,
 )
 
-data_collator = DataCollatorForPacking()
+eval_dataset = RawDataset(
+    raw_graph_dataset,
+    sampling_mode=1,
+    mode='eval',
+    negative_size=9,
+    max_pos_size=5,
+    expand_factor=40,
+    cache_refresh_time=64,
+    test_topk=-1,
+    tokenizer=tokenizer,
+)
+
+data_collator = DataCollatorForPWC()
 
 modules_to_save = []
 if model_args.use_graph and model_args.enable_graph_proj_requires_grad:
@@ -273,7 +285,7 @@ trainer = GLMTrainer(
     model=model,
     args=training_args,
     train_dataset=dataset,
-    # eval_dataset=eval_dataset,
+    eval_dataset=eval_dataset,
     tokenizer=tokenizer,
     data_collator=data_collator,
     # compute_metrics=functools.partial(compute_metrics, tokenizer=tokenizer)

@@ -16,6 +16,7 @@
 The Trainer class, to easily train a 🤗 Transformers from scratch or finetune it on a new task.
 """
 # coding=utf-8
+from collections import defaultdict
 from transformers.trainer import *
 from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
 import os
@@ -29,6 +30,7 @@ import torch.nn.functional as F
 import json
 from tqdm import tqdm
 logger = logging.get_logger(__name__)
+from dataset import INSTRUCTION
 from utils import LABEL_TOKEN
 
 WEIGHTS_NAME = "pytorch_model.bin"
@@ -68,6 +70,20 @@ class LoRATrainer(Trainer):
             self.tokenizer.save_pretrained(output_dir)
 
         torch.save(self.args, os.path.join(output_dir, TRAINING_ARGS_NAME, ))
+
+
+def calculate_hit_at_k(sorted_parent_scores, true_parents, k):
+
+    top_k_predictions = [score["parent"] for score in sorted_parent_scores[:k]]
+    return any(parent in true_parents for parent in top_k_predictions)
+
+
+def calculate_recall_at_k(sorted_parent_scores, true_parents, k):
+
+    top_k_predictions = [score["parent"] for score in sorted_parent_scores[:k]]
+    matched = sum(1 for parent in top_k_predictions if parent in true_parents)
+    return matched / len(true_parents)
+
 
 
 class GLMTrainer(Trainer):
@@ -279,7 +295,6 @@ class GLMTrainer(Trainer):
         metric_key_prefix: str = "eval",
     ) -> Dict[str, float]:
         
-
         if not hasattr(self, "eval_ground_truth"):
             with open(self.args.eval_ground_truth, "r", encoding="utf-8") as f:
                 self.eval_ground_truth = json.load(f)
@@ -336,44 +351,43 @@ class GLMTrainer(Trainer):
             # continue
             loss, logits, labels = self.prediction_step(model, inputs, prediction_loss_only=False, ignore_keys=ignore_keys)
             logits = self.get_logits(logits,inputs)
-            res = [{"author":inputs['author'],
-                    "pub":inputs['pubs'][i],
+            res = [{"query":inputs['query'],
+                    "candidate":inputs['candidates'][i],
                     "logit":logits[i].item()}
-                    for i in range(len(inputs['pubs']))]
+                    for i in range(len(inputs['candidates']))]
             raw = self.accelerator.gather_for_metrics(res)
             if self.accelerator.is_main_process:
                 eval_result.extend(raw)
-        if self.accelerator.is_main_process:
-            overall_result = {}
-            for i in eval_result:
-                author = i['author']
-                pub = i['pub']
-                logit = i['logit']
-                
-                if author not in overall_result.keys():
-                    overall_result[author] = {}
-                overall_result[author][pub]= logit
-                
-            os.makedirs(os.path.join(args.output_dir,f"result"),exist_ok=True)
-            with open(os.path.join(args.output_dir,f"result/step-{self.state.global_step}.json"), 'w') as f:
-                json.dump(overall_result, f)   
-             
-            AUCs,MAPs = cal_auc_map(overall_result,self.eval_ground_truth)
 
+        if self.accelerator.is_main_process:
+            grouped = defaultdict(list)
+            for entry in eval_result:
+                grouped[entry["query"]].append(entry)
+
+            sorted_groups = {}
+            for query, entries in grouped.items():
+                sorted_groups[query] = sorted(entries, key=lambda x: x["logit"], reverse=True)
+      
+            hit_1, recall_1 = cal_hit_recall(sorted_groups, self.eval_dataset.full_graph, 1)
+            hit_5, recall_5 = cal_hit_recall(sorted_groups, self.eval_dataset.full_graph, 5)
+            hit_10, recall_10 = cal_hit_recall(sorted_groups, self.eval_dataset.full_graph, 10)
+            # os.makedirs(os.path.join(args.output_dir,f"result"),exist_ok=True)
+            # with open(os.path.join(args.output_dir,f"result/step-{self.state.global_step}.json"), 'w') as f:
+            #     json.dump(overall_result, f)  
 
             #update best metric
             if self.state.best_metric is None:
-                self.state.best_metric = AUCs
+                self.state.best_metric = hit_1
                 self.state.best_model_checkpoint = os.path.join(self.args.output_dir,f"{PREFIX_CHECKPOINT_DIR}-{self.state.global_step}")
-            elif AUCs > self.state.best_metric:
-                self.state.best_metric = AUCs
+            elif hit_1 > self.state.best_metric:
+                self.state.best_metric = hit_1
                 self.state.best_model_checkpoint = os.path.join(self.args.output_dir,f"{PREFIX_CHECKPOINT_DIR}-{self.state.global_step}")
             
-            output = {'AUC':AUCs,'MAP':MAPs,'step':self.state.global_step,'epoch':self.state.epoch}
-            self.log(output)
+            # output = {'AUC':AUCs,'MAP':MAPs,'step':self.state.global_step,'epoch':self.state.epoch}
+            # self.log(output)
             with open(os.path.join(args.output_dir,f"result.txt"), 'a') as f:
-                f.write(f"step:{self.state.global_step},epoch:{self.state.epoch},AUC:{AUCs},MAP:{MAPs}\n")       
-        
+                f.write(f"\nstep:{self.state.global_step}, epoch:{self.state.epoch}, hit@1:{hit_1}, hit@5:{hit_5}, hit@10:{hit_10}, recall@1:{recall_1}, recall@5:{recall_5}\ recall@10:{recall_10}n")       
+
 
     def get_logits(self, logits, inputs): #only for IND task
         labels_pos = torch.masked_select(torch.arange(inputs['input_ids'].shape[-1], device = self.model.device), inputs['input_ids'] == self.tokenizer.convert_tokens_to_ids(LABEL_TOKEN))
@@ -385,6 +399,7 @@ class GLMTrainer(Trainer):
             YES_TOKEN_IDS, NO_TOKEN_IDS = self.tokenizer.convert_tokens_to_ids(['Yes','No'])
         
         yes_logit,no_logit= logits[:,labels_pos,YES_TOKEN_IDS],logits[:,labels_pos,NO_TOKEN_IDS]
+        
         logit = F.softmax(torch.concat([yes_logit,no_logit],dim=0),dim=0)[0]
         return logit
     
@@ -393,6 +408,30 @@ class GLMTrainer(Trainer):
         #     breakpoint()
         # [n for n, p in opt_model.named_parameters() if (n in decay_parameters and p.requires_grad)]
     
+def cal_hit_recall(sorted_groups, graph, k):
+    hit_at_k = 0
+    total_recall = 0
+    total_queries = len(sorted_groups)
+
+    for query, sorted_candidates in sorted_groups.items():
+        top_k_candidates = [entry["candidate"] for entry in sorted_candidates[:k]]
+        true_candidates = set(graph.predecessors(query))
+
+        # Hit@k: 如果 true_candidates 中任何一个候选项出现在 top-k 中，则计为 1
+        if any(candidate in true_candidates for candidate in top_k_candidates):
+            hit_at_k += 1
+
+        # Recall@k: 在 top-k 中找到的 true_candidates 的比例
+        recall = len(true_candidates.intersection(top_k_candidates)) / len(true_candidates) if true_candidates else 0
+        total_recall += recall
+
+    # 计算最终指标
+    hit_at_k /= total_queries
+    recall_at_k = total_recall / total_queries
+
+    return hit_at_k, recall_at_k
+
+
 def cal_auc_map(pred, ground_truth):
     data_dict = pred
     labels_dict = ground_truth
