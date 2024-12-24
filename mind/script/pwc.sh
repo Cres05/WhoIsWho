@@ -7,8 +7,8 @@ wandb enabled
 
 NUM_GPUS=8
 
-torchrun --standalone --nnodes=1 --nproc_per_node=$NUM_GPUS  pipeline_for_multimodal.py \
-    configs/llama3/stage1.json 2>&1 | tee output/llama3/stage1_1.log
+torchrun --standalone --nnodes=1 --nproc_per_node=$NUM_GPUS  pipeline_for_pwc.py \
+    configs/llama3/pwc.json 2>&1 | tee output/llama3/pwc.log
 
 
 # torchrun --standalone --nnodes=1 --nproc_per_node=$NUM_GPUS  pipeline_for_multimodal.py \

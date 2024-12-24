@@ -1,5 +1,5 @@
 {
-    "model_name_or_path":"LLM-Research/Meta-Llama-3-8B",
+    "model_name_or_path":"models/Meta-Llama-3-8B",
     "author_data":"data/IND-WhoIsWho/train_author.json",
     "pub_data":"data/IND-WhoIsWho/pid_to_info_all.json",
     "eval_data":"data/IND-WhoIsWho/ind_valid_author.json",
@@ -11,9 +11,9 @@
     "lora_dropout":0.05,
 
     "enable_llm_requires_grad": true,
-    "lora_ckpt_path":"",
+    "lora_ckpt_path":"output/llama3/stage1/checkpoint-96",
 
-    "use_emb":true,
+    "use_emb":false,
     "text_proj_ckpt_path": "",
     "text_feature":"author_org_venue",
     "enable_text_proj_requires_grad":false,
@@ -21,7 +21,7 @@
     "use_oagbert":false,
 
     "shuffle_profile":false,
-    "use_graph":true,
+    "use_graph":false,
     "enable_graph_proj_requires_grad":false,
     "graph_proj_ckpt_path":"",
 

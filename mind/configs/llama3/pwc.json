@@ -3,8 +3,6 @@
     "ptm_model_path":"models/roberta-base",
     "author_data":"data/IND-WhoIsWho/train_author.json",
     "pub_data":"data/IND-WhoIsWho/pid_to_info_all.json",
-    "eval_data":"data/IND-WhoIsWho/ind_valid_author.json",
-    "eval_ground_truth":"data/IND-WhoIsWho/ind_valid_author_ground_truth.json",
     "output_dir":"output/llama3/stage1",
     "run_name":"stage1",
     "preprocessing_num_workers": 20,
@@ -29,9 +27,8 @@
     "use_chat_template":false,
 
     "bf16":true,
-    "seed": 42,
+    "seed": 47,
     "save_steps":20,
-    "eval_steps":20,
     "save_only_model":true,
     "deepspeed":"configs/ds_zero_1.json"
 }

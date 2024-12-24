@@ -85,7 +85,7 @@ transformers.utils.logging.enable_explicit_format()
 
 # Log on each process the small summary:
 logger.warning(
-    f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
+    f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}, "
     + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
 )
 logger.info(f"Training/evaluation parameters {training_args}")
@@ -202,6 +202,7 @@ peft_config = LoraConfig(
     lora_dropout=model_args.lora_dropout,
 )
 model = get_peft_model(model, peft_config).cuda() 
+model.print_trainable_parameters()
 if model_args.lora_ckpt_path:  # load lora checkpoint, maybe modified
     if os.path.exists(os.path.join(model_args.lora_ckpt_path, "pytorch_model.bin")):
         paras_path = os.path.join(model_args.lora_ckpt_path, "pytorch_model.bin")
