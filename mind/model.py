@@ -191,7 +191,8 @@ class LlamaModelForIND(LlamaPreTrainedModel):
                 graph_ids = torch.masked_select(torch.arange(input_ids.shape[-1], device = self.device).unsqueeze(0), input_ids == self.GRAPH_TOKEN_IDS)
                 inputs_embeds[:,graph_ids] = self.graph_proj(graph_emb.to(self.dtype))
         
-        labels_pos = torch.masked_select(torch.arange(input_ids.shape[-1], device = self.device), input_ids == self.LABEL_TOKEN_IDS)
+        # print(input_ids.device)
+        labels_pos = torch.masked_select(torch.arange(input_ids.shape[-1], device = input_ids.device), input_ids == self.LABEL_TOKEN_IDS)
 
         # if self.config.model_args.enable_label_token_requires_grad:
         #     label_token_hidden_states = inputs_embeds[:,labels_pos]

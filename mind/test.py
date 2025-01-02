@@ -8,7 +8,7 @@ from peft import get_peft_model, LoraConfig, TaskType, PeftModel
 from utils import *
 from model import GLMModelforIND, LlamaModelForIND, Qwen2ModelForIND
 from torch.nn import DataParallel
-
+from dataset import INSTRUCTION, MAGDataset, RawDataset
 
 def calculate_hit_at_k(sorted_parent_scores, true_parents, k):
 
@@ -76,63 +76,6 @@ elif training_args.fp16:
 else:
     dtype = torch.float32
 
-with open(data_args.author_data, "r", encoding="utf-8") as f:
-    author_data = json.load(f)
-with open(data_args.eval_data, "r", encoding="utf-8") as f:
-    eval_data = json.load(f)
-with open(data_args.pub_data, "r", encoding="utf-8") as f:
-    pub_data = json.load(f)
-
-
-from dataset import INSTRUCTION, MAGDataset, RawDataset
-
-
-raw_graph_dataset = MAGDataset(
-    name="pwc_method",
-    path="data/pwc/pwc_method.pickle.bin",
-    raw=True,
-    existing_partition=False,
-)
-
-dataset = RawDataset(
-    raw_graph_dataset,
-    sampling_mode=1,
-    negative_size=15,
-    max_pos_size=5,
-    expand_factor=40,
-    cache_refresh_time=64,
-    test_topk=-1,
-    tokenizer=tokenizer,
-)
-
-
-graph = dataset.full_graph
-pseudo_root_node = dataset.pseudo_root_node
-root_nodes = graph.successors(pseudo_root_node)
-second_level_nodes = set()
-third_level_nodes = set()
-# 根节点
-for root in root_nodes:
-    # 第二层节点
-    successors = list(graph.successors(root))
-    second_level_nodes.update(successors)
-    # 第三层节点
-    for node in successors:
-        third_level_nodes.update(graph.successors(node))
-
-test_nodes = []
-for node in dataset.test_node_list:
-    if node in third_level_nodes:
-        test_nodes.append(node)
-
-hit_at_1 = 0
-hit_at_5 = 0
-hit_at_10 = 0
-recall_at_1 = 0
-recall_at_5 = 0
-recall_at_10 = 0
-
-results = []
 
 model = LlamaModelForIND.from_pretrained(
     model_args.model_name_or_path,
@@ -157,23 +100,7 @@ smart_tokenizer_and_embedding_resize(
     model=model,
 )
 model.add_special_tokens(tokenizer)
-ptm_tokenizer = None
 
-
-
-modules_to_save = []
-if model_args.use_graph and model_args.enable_graph_proj_requires_grad:
-    modules_to_save += ["graph_proj"]
-if model_args.use_emb and model_args.enable_text_proj_requires_grad:
-    modules_to_save += ["text_proj"]
-if model_args.enable_embedddings_requires_grad:
-    modules_to_save += ["embed_tokens"]
-if model_args.enable_lmhead_requires_grad:
-    modules_to_save += ["lm_head"]
-if model_args.enable_layernorm_requires_grad:
-    modules_to_save += ["input_layernorm", "post_attention_layernorm"]
-if model_args.enable_llm_requires_grad:
-    modules_to_save += ["lora"]
 
 if "Llama" in model_args.model_name_or_path or "Qwen2" in model_args.model_name_or_path:
     target_modules = ["q_proj", "k_proj", "v_proj", "o_proj"]
@@ -225,18 +152,67 @@ if model_args.lora_ckpt_path:  # load lora checkpoint, maybe modified
     ), f"missing keys: {loading_res.missing_keys}"
     model = model.cuda()
 
+model = torch.nn.DataParallel(model)  # 多 GPU 训练
+model = model.cuda()
 
 model.eval()
 
+
+raw_graph_dataset = MAGDataset(
+    name="pwc_method",
+    path="data/pwc/pwc_method.pickle.bin",
+    raw=True,
+    existing_partition=False,
+)
+
+dataset = RawDataset(
+    raw_graph_dataset,
+    sampling_mode=1,
+    negative_size=15,
+    max_pos_size=5,
+    expand_factor=40,
+    cache_refresh_time=64,
+    test_topk=-1,
+    tokenizer=tokenizer,
+)
+
+graph = dataset.full_graph
+pseudo_root_node = dataset.pseudo_root_node
+root_nodes = graph.successors(pseudo_root_node)
+second_level_nodes = set()
+third_level_nodes = set()
+# 根节点
+for root in root_nodes:
+    # 第二层节点
+    successors = list(graph.successors(root))
+    second_level_nodes.update(successors)
+    # 第三层节点
+    for node in successors:
+        third_level_nodes.update(graph.successors(node))
+
+test_nodes = []
+for node in dataset.test_node_list:
+    if node in third_level_nodes:
+        test_nodes.append(node)
+
+hit_at_1 = 0
+hit_at_5 = 0
+hit_at_10 = 0
+recall_at_1 = 0
+recall_at_5 = 0
+recall_at_10 = 0
+
+results = []
+
 local_instruct = (
-    'Query: "{}"\n'
-    + '1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
+    '\nQuery: "{}"'
+    + '\n1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
     + LABEL_TOKEN
 )
 
 input_text = INSTRUCTION.format(local_instruct)
 
-batch_size = 32
+batch_size = 32 * 7
 
 # second_level_nodes 分批
 second_level_nodes_batches = [
@@ -264,7 +240,7 @@ for test_node in tqdm(test_nodes):
         )
 
         device = "cuda" if torch.cuda.is_available() else "cpu"
-        inputs = {key: value.to(device) for key, value in inputs.items()}
+        # inputs = {key: value.to(device) for key, value in inputs.items()}
 
         with torch.no_grad():
             outputs = model(**inputs)

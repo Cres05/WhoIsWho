@@ -42,13 +42,13 @@ INSTRUCTION = """
 You are tasked with determining hierarchical relationships between concepts based on the given query and candidate terms. Specifically:
 1. Determine if the **Hypernym Candidate** is a hypernym (broader category) of the query.
 2. Determine if the **Hyponym Candidate** is a hyponym (narrower category) of the query.
-
-For each query and candidate pair, answer the questions with 'Yes' or 'No'. {}
+For each query and candidate pair, answer the questions with 'Yes' or 'No'.
+{}
 """
 
 LOCAL_INSTRUCTION = (
-    'Query: "{}"\n'
-    + '1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
+    '\nQuery: "{}"'
+    + '\n1. Hypernym Candidate: "{}"\n   Is this a hypernym of the query? Answer: '
     + LABEL_TOKEN
     + '\n2. Hyponym Candidate: "{}"\n   Is this a hyponym of the query? Answer: '
     + LABEL_TOKEN
@@ -637,7 +637,7 @@ class RawDataset(Dataset):
                 packing_data.append(pair)  # 添加到当前组
 
                 # 如果当前组满了 10 个样本，打包到 test_data
-                if len(packing_data) ==30:
+                if len(packing_data) == 20:
                     self.test_data.append(packing_data)
                     packing_data = []  # 清空当前组
 
@@ -663,7 +663,7 @@ class RawDataset(Dataset):
                 packing_data.append(pair)  # 添加到当前组
 
                 # 如果当前组满了 10 个样本，打包到 test_data
-                if len(packing_data) == 30:
+                if len(packing_data) == 20:
                     self.valid_data.append(packing_data)
                     packing_data = []  # 清空当前组
 
@@ -712,7 +712,10 @@ class RawDataset(Dataset):
 
             # select negative triplet(s)
             negative_size = len(res) if self.negative_size == -1 else self.negative_size
-            negative_positions = self._get_negative_positions(q, negative_size)
+            sibling_positions = self._get_sibling_negatives(q, 5)
+            negative_positions = self._get_negative_positions(q, negative_size - len(sibling_positions))
+            negative_positions.extend(sibling_positions)
+            random.shuffle(negative_positions)
 
             for p, c in positive_positions:
                 res.append((q.description, p.description, c.description, 1, 1))
@@ -755,7 +758,7 @@ class RawDataset(Dataset):
                 [local_instruct.format(i[0].description, i[1].description) for i in pairs]
             )
             input_text = INSTRUCTION.format(local_instruct)
-
+        
         llm_inputs = self.tokenizer(
             input_text,
             return_tensors="pt",
@@ -927,6 +930,16 @@ class RawDataset(Dataset):
             negatives = negatives[:negative_size]
 
         return negatives
+    
+    def _get_sibling_negatives(self, query_node, size):
+        negatives = []
+        parents = self.node2parents.get(query_node, [])
+        for parent in parents:
+            siblings = list(self.core_subgraph.successors(parent))  # 获取同层节点
+            siblings = [(parent, s) for s in siblings if s != query_node]  # 排除自身
+            negatives.extend(siblings)
+        random.shuffle(negatives)
+        return negatives[:size]
 
     def _my_get_exactly_k_negatives(self, query_node, negative_size, ignore=[]):
         """Generate EXACTLY negative_size samples for the query node"""

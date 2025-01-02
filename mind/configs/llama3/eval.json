@@ -11,7 +11,7 @@
     "lora_dropout":0.05,
 
     "enable_llm_requires_grad": true,
-    "lora_ckpt_path":"output/llama3/pwc_1226/checkpoint-80",
+    "lora_ckpt_path":"output/llama3/pwc_1227/checkpoint-1056",
 
     "use_emb":false,
     "text_proj_ckpt_path": "",

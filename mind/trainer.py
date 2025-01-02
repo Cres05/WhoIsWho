@@ -22,13 +22,12 @@ from transformers.trainer_utils import PREFIX_CHECKPOINT_DIR
 import os
 import torch
 from transformers import Trainer
-from transformers.modeling_utils import unwrap_model, PreTrainedModel
+from transformers.modeling_utils import unwrap_model
 from transformers.utils import logging
-from typing import Any, Callable, Dict, List, NewType, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 from sklearn.metrics import average_precision_score,roc_auc_score
 import torch.nn.functional as F
 import json
-from tqdm import tqdm
 logger = logging.get_logger(__name__)
 from dataset import INSTRUCTION
 from utils import LABEL_TOKEN
@@ -72,20 +71,6 @@ class LoRATrainer(Trainer):
         torch.save(self.args, os.path.join(output_dir, TRAINING_ARGS_NAME, ))
 
 
-def calculate_hit_at_k(sorted_parent_scores, true_parents, k):
-
-    top_k_predictions = [score["parent"] for score in sorted_parent_scores[:k]]
-    return any(parent in true_parents for parent in top_k_predictions)
-
-
-def calculate_recall_at_k(sorted_parent_scores, true_parents, k):
-
-    top_k_predictions = [score["parent"] for score in sorted_parent_scores[:k]]
-    matched = sum(1 for parent in top_k_predictions if parent in true_parents)
-    return matched / len(true_parents)
-
-
-
 class GLMTrainer(Trainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -120,6 +105,7 @@ class GLMTrainer(Trainer):
         # state_dict = self.accelerator.get_state_dict(self.deepspeed)
         # if self.args.should_save:
         #     self._save(output_dir, state_dict=state_dict)
+    
     def predict_without_train(        
         self,
         test_dataset=None,
@@ -288,6 +274,7 @@ class GLMTrainer(Trainer):
                     raise Exception("calculating AUC error:  unmatched predict dataset and ground truth dataset")     
             # with open(os.path.join(output_dir,f"predict_res.json"), 'w') as f:
             #     json.dump(overall_result, f)
+    
     def evaluate(
         self,
         eval_dataset: Optional[Dataset] = None,
@@ -295,9 +282,6 @@ class GLMTrainer(Trainer):
         metric_key_prefix: str = "eval",
     ) -> Dict[str, float]:
         
-        if not hasattr(self, "eval_ground_truth"):
-            with open(self.args.eval_ground_truth, "r", encoding="utf-8") as f:
-                self.eval_ground_truth = json.load(f)
         self._memory_tracker.start()
         args = self.args
         dataloader = self.get_eval_dataloader(eval_dataset)

@@ -1,10 +1,8 @@
 {
     "model_name_or_path":"models/Meta-Llama-3-8B",
     "ptm_model_path":"models/roberta-base",
-    "author_data":"data/IND-WhoIsWho/train_author.json",
-    "pub_data":"data/IND-WhoIsWho/pid_to_info_all.json",
-    "output_dir":"output/llama3/pwc_1227",
-    "run_name":"pwc",
+    "output_dir":"output/llama3/pwc_0102",
+    "run_name":"pwc_0102",
     "preprocessing_num_workers": 20,
 
     "lora_rank":8,
